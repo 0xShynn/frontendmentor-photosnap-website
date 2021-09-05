@@ -6,14 +6,17 @@ export const sharedBaseStyle = {
   letterSpacing: '2px',
 }
 
+const SharedBtnStyle = { py: '11px', px: '44px', fontSize: '12px' }
+
 export const lightBtn = {
   lightBtn: {
     bg: 'primary.pureblack',
     color: 'primary.purewhite',
-    fontSize: '12px',
+    ...SharedBtnStyle,
     _hover: {
       bg: 'primary.lightgrey',
       color: 'primary.pureblack',
+      textDecoration: 'none',
     },
     _disabled: {
       _hover: {},
@@ -25,10 +28,11 @@ export const darkBtn = {
   darkBtn: {
     bg: 'primary.purewhite',
     color: 'primary.pureblack',
-    fontSize: '12px',
+    ...SharedBtnStyle,
     _hover: {
       bg: 'primary.lightgrey',
       color: 'primary.pureblack',
+      textDecoration: 'none',
     },
     _disabled: {
       _hover: {},

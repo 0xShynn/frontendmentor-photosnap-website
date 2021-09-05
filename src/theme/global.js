@@ -1,10 +1,9 @@
 const global = {
-  global: {
-    // styles for the `body`
-    body: {
-      fontSize: '16px',
-      fontFamily: 'body',
-    },
+  body: {
+    fontSize: '16px',
+    fontFamily: 'body',
+    color: 'primary.pureblack',
+    bg: 'white',
   },
 }
 
