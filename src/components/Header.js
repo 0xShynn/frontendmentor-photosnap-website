@@ -47,13 +47,12 @@ const Header = () => {
           <IconButton
             colorScheme="whiteAlpha"
             aria-label="Open Menu"
-            boxSize="10"
             onClick={isOpen ? onClose : onOpen}
             icon={
               isOpen ? (
-                <CloseIcon color="primary.pureblack" />
+                <CloseIcon color="primary.pureblack" boxSize="16px" />
               ) : (
-                <HamburgerMenuIcon color="primary.pureblack" />
+                <HamburgerMenuIcon color="primary.pureblack" boxSize="20px" />
               )
             }
             zIndex="overlay"
@@ -83,7 +82,7 @@ const Header = () => {
               <CustomLink
                 href="/"
                 variant="lightBtn"
-                w="full"
+                w={{ base: 'full', sm: '300px' }}
                 py="4"
                 {...navMenuSharedStyling}
               >
