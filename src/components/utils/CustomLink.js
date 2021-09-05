@@ -21,7 +21,9 @@ const CustomLink = (props) => {
         }}
         {...props}
       >
-        <Box className="child">{props.children}</Box>
+        <Box className="child" mx="auto">
+          {props.children}
+        </Box>
         {arrow && (
           <Box
             w="42px"
