@@ -1,5 +1,9 @@
 const colors = {
-  primary: {},
+  primary: {
+    pureblack: '#000000',
+    lightgrey: '#DFDFDF',
+    purewhite: '#FFFFFF',
+  },
   secondary: {},
 }
 

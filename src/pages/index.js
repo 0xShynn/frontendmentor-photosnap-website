@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/layout'
 import Head from 'next/head'
 import Image from 'next/image'
+import NextLink from 'next/link'
 
 export default function Home() {
   return (
@@ -20,11 +21,15 @@ export default function Home() {
         py="12"
         px="6"
       >
-        <Heading as="h1">Next Chakra UI Starter</Heading>
-
-        <Text mb="12">
-          Get started by editing <code>pages/index.js</code>
-        </Text>
+        <Box mb="12">
+          <Heading as="h1" variant="h1">
+            Next Chakra UI Starter
+          </Heading>
+          <Text>
+            Get started by editing <code>pages/index.js</code>
+          </Text>
+          <NextLink href="/designsystem">Design System</NextLink>
+        </Box>
 
         <SimpleGrid columns={[1, 2]} spacing={12} maxW="600px">
           <Link href="https://nextjs.org/docs">

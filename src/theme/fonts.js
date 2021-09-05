@@ -1,6 +1,6 @@
 const fonts = {
-  // heading: 'Spartan',
-  // body: 'Roboto',
+  heading: 'DM Sans',
+  body: 'DM Sans',
 }
 
 export default fonts

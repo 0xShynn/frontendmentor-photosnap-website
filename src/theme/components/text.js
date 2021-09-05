@@ -1,6 +1,10 @@
 const text = {
   // style object for base or default style
-  baseStyle: {},
+  baseStyle: {
+    fontSize: '15px',
+    lineHeight: '25px',
+    color: 'gray.600',
+  },
   // styles for different sizes ("sm", "md", "lg")
   sizes: {},
   // styles for different visual variants ("outline", "solid")
