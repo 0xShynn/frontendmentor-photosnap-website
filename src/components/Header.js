@@ -5,6 +5,7 @@ import { Box, Divider, Flex, HStack, VStack } from '@chakra-ui/layout'
 import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
 import CloseIcon from '../assets/ui/CloseIcon'
 import HamburgerMenuIcon from '../assets/ui/HamburgerMenuIcon'
+import navLinks from '../constants/navLinks'
 
 import CustomLink from './utils/CustomLink'
 
@@ -27,7 +28,7 @@ const Header = () => {
       >
         <CustomLink href="/">
           <Box w="170px">
-            <PhotoSnapLogo />
+            <PhotoSnapLogo color="primary.pureblack" />
           </Box>
         </CustomLink>
 
@@ -69,15 +70,15 @@ const Header = () => {
         >
           <Box bg="white" w="full" p="8">
             <VStack spacing="5">
-              <CustomLink href="/" {...navMenuSharedStyling}>
-                Stories
-              </CustomLink>
-              <CustomLink href="/" {...navMenuSharedStyling}>
-                Features
-              </CustomLink>
-              <CustomLink href="/" {...navMenuSharedStyling}>
-                Pricing
-              </CustomLink>
+              {navLinks.slice(1).map((link, index) => (
+                <CustomLink
+                  key={index}
+                  href={link.url}
+                  {...navMenuSharedStyling}
+                >
+                  {link.label}
+                </CustomLink>
+              ))}
               <Divider borderColor="primary.pureblack" opacity="0.25" />
               <CustomLink
                 href="/"

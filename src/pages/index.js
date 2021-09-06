@@ -1,6 +1,7 @@
 import { Box, Flex } from '@chakra-ui/layout'
 import Head from 'next/head'
 
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 export default function Home() {
@@ -19,6 +20,8 @@ export default function Home() {
           make it easy to share photos, tell stories and connect with others.
         </Box>
       </Flex>
+
+      <Footer />
     </Box>
   )
 }
