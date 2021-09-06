@@ -57,6 +57,7 @@ const Footer = () => {
               spacing="4"
               mb={{ base: 12, md: 20 }}
               direction={{ base: 'column', md: 'row' }}
+              display={{ base: 'flex', xl: 'none' }}
             >
               {navLinks.map((link, index) => (
                 <CustomLink key={index} href={link.url} color="white">
@@ -66,6 +67,23 @@ const Footer = () => {
             </Stack>
           </Flex>
         </Flex>
+
+        <Stack
+          spacing="4"
+          mb={{ base: 12, md: 20, xl: 0 }}
+          direction="column"
+          justify="flex-start"
+          align="flex-start"
+          flex="1"
+          display={{ base: 'none', xl: 'flex' }}
+          ml="110px"
+        >
+          {navLinks.map((link, index) => (
+            <CustomLink key={index} href={link.url} color="white">
+              {link.label}
+            </CustomLink>
+          ))}
+        </Stack>
 
         <Flex
           direction="column"
