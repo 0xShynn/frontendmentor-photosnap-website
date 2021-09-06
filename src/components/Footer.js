@@ -27,7 +27,7 @@ const Footer = () => {
         direction={{ base: 'column', md: 'row' }}
         align={{ base: 'center', md: 'stretch' }}
         justify={{ base: 'center', md: 'space-between' }}
-        maxW="1110px"
+        maxW="container.lg2"
         mx="auto"
       >
         <Flex direction="column" align={{ md: 'flex-start' }}>

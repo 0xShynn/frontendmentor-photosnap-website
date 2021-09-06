@@ -19,7 +19,7 @@ const Header = () => {
       <Flex
         justify="space-between"
         align="center"
-        maxW="1110px"
+        maxW="container.lg2"
         mx="auto"
         py="4"
         px="6"

@@ -10,6 +10,7 @@ import Text from './components/text'
 import config from './config'
 import fonts from './fonts'
 import global from './global'
+import sizes from './sizes'
 import textStyles from './textStyles'
 
 const overrides = {
@@ -20,6 +21,7 @@ const overrides = {
   colors,
   breakpoints,
   fonts,
+  sizes,
   textStyles,
   components: {
     Button,

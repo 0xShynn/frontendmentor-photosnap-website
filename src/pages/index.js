@@ -13,11 +13,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex role="main" bg="black" direction="column">
+      <Flex role="main" direction="column">
         <Header />
-        <Box bg="gray.100" p="6">
+        <Box
+          bg="gray.300"
+          p="6"
+          boxSizing="content-box"
+          maxW="container.lg2"
+          mx="auto"
+          px="6"
+        >
           Photosnap is a platform for photographers and visual storytellers. We
           make it easy to share photos, tell stories and connect with others.
+          dezdeozjidjizeojdiozejdoijzeiodjozeij
         </Box>
       </Flex>
 
