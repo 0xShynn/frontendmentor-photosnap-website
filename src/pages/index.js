@@ -3,8 +3,20 @@ import Head from 'next/head'
 
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import { getHomePage } from '../graphql/queries/getHomePage'
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const data = await getHomePage()
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+export default function Home({ data }) {
+  console.log(data)
   return (
     <Box>
       <Head>
