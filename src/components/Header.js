@@ -22,11 +22,11 @@ const Header = () => {
         maxW="1110px"
         mx="auto"
         py="4"
-        px="4"
+        px="6"
         boxSizing="content-box"
         pos="relative"
       >
-        <CustomLink href="/">
+        <CustomLink href="/" aria-label="Photosnap Logo">
           <Box w="170px">
             <PhotoSnapLogo color="primary.pureblack" />
           </Box>
