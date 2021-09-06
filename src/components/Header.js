@@ -9,7 +9,7 @@ import HamburgerMenuIcon from '../assets/ui/HamburgerMenuIcon'
 import CustomLink from './utils/CustomLink'
 
 const Header = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onToggle } = useDisclosure()
 
   const navMenuSharedStyling = { fontSize: '15px', letterSpacing: '2.5px' }
 
@@ -47,7 +47,7 @@ const Header = () => {
           <IconButton
             colorScheme="whiteAlpha"
             aria-label="Open Menu"
-            onClick={isOpen ? onClose : onOpen}
+            onClick={onToggle}
             icon={
               isOpen ? (
                 <CloseIcon color="primary.pureblack" boxSize="16px" />
