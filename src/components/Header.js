@@ -33,7 +33,7 @@ const Header = () => {
         </CustomLink>
 
         <HStack spacing="8" display={{ base: 'none', md: 'flex' }}>
-          <CustomLink href="/">Stories</CustomLink>
+          <CustomLink href="/stories">Stories</CustomLink>
           <CustomLink href="/">Features</CustomLink>
           <CustomLink href="/">Pricing</CustomLink>
         </HStack>

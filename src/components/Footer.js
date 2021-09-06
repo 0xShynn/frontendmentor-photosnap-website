@@ -22,7 +22,12 @@ const Footer = () => {
   ]
 
   return (
-    <Box role="contentinfo" bg="primary.pureblack" py="16" px="6">
+    <Box
+      role="contentinfo"
+      bg="primary.pureblack"
+      py="16"
+      px={{ base: 6, md: 10 }}
+    >
       <Flex
         direction={{ base: 'column', md: 'row' }}
         align={{ base: 'center', md: 'stretch' }}

@@ -3,7 +3,7 @@ const global = {
     fontSize: '16px',
     fontFamily: 'body',
     color: 'primary.pureblack',
-    bg: 'white',
+    bg: 'gray.900',
   },
 }
 
