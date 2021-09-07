@@ -45,6 +45,8 @@ const GET_STORIES_PAGE_QUERY = gql`
       slug
       photo {
         url
+        width
+        height
       }
       date
       id
