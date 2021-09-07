@@ -82,7 +82,7 @@ export default function Stories({ stories = [], featuredStory }) {
                 transition="transform 400ms"
                 willChange="tranform"
                 _hover={{
-                  transform: 'translateY(-20px)',
+                  transform: { base: null, md: 'translateY(-20px)' },
                   transition: 'transform 200ms',
                   _after: {
                     content: `" "`,
@@ -90,8 +90,10 @@ export default function Stories({ stories = [], featuredStory }) {
                     bottom: '0',
                     w: 'full',
                     h: '6px',
-                    bgGradient:
-                      'linear-gradient(1deg, rgba(255,197,147,1) 0%, rgba(188,113,152,1) 53%, rgba(90,119,255,1) 100%);',
+                    bgGradient: {
+                      base: null,
+                      md: 'linear-gradient(1deg, rgba(255,197,147,1) 0%, rgba(188,113,152,1) 53%, rgba(90,119,255,1) 100%);',
+                    },
                     transition: 'opacity 200ms',
                   },
                 }}
