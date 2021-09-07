@@ -71,7 +71,28 @@ export default function Stories({ stories = [], featuredStory }) {
 
           <SimpleGrid minChildWidth="300px" spacing="0">
             {stories.map((story) => (
-              <Box bg="gray.800" key={story.id} color="white" pos="relative">
+              <Box
+                bg="gray.800"
+                key={story.id}
+                color="white"
+                pos="relative"
+                transition="transform 400ms"
+                willChange="tranform"
+                _hover={{
+                  transform: 'translateY(-20px)',
+                  transition: 'transform 200ms',
+                  _after: {
+                    content: `" "`,
+                    pos: 'absolute',
+                    bottom: '0',
+                    w: 'full',
+                    h: '6px',
+                    bgGradient:
+                      'linear-gradient(1deg, rgba(255,197,147,1) 0%, rgba(188,113,152,1) 53%, rgba(90,119,255,1) 100%);',
+                    transition: 'opacity 200ms',
+                  },
+                }}
+              >
                 <Box w="full" zIndex="base" pos="relative" bg="black">
                   <Box pos="relative" h={{ base: '375px', md: 'full' }}>
                     {storyImageLayout === 'fill' ? (
