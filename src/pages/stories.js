@@ -5,21 +5,20 @@ import {
   Heading,
   SimpleGrid,
   Text,
-  VStack,
 } from '@chakra-ui/layout'
 import { useBreakpointValue } from '@chakra-ui/media-query'
-import { chakra } from '@chakra-ui/system'
 import Head from 'next/head'
 import NextImage from 'next/image'
 
 import Arrow from '../assets/arrow'
+import FeaturedStory from '../components/FeaturedStory'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import CustomLink from '../components/utils/CustomLink'
 import { getStoriesPage } from '../graphql/queries/getStoriesPage'
 
 export const getStaticProps = async () => {
-  const { page, stories, featuredStory } = await getStoriesPage() // your fetch function here
+  const { page, stories, featuredStory } = await getStoriesPage()
 
   return {
     props: {
@@ -38,6 +37,18 @@ export default function Stories({ stories = [], featuredStory }) {
 
   const featStory = featuredStory[0]
 
+  const featStoryImageMobile = featStory.featPhotos.find(
+    (photo) => photo.imageVersion === 'mobile'
+  )
+
+  const featStoryImageTablet = featStory.featPhotos.find(
+    (photo) => photo.imageVersion === 'tablet'
+  )
+
+  const featStoryImageDesktop = featStory.featPhotos.find(
+    (photo) => photo.imageVersion === 'desktop'
+  )
+
   return (
     <Box>
       <Head>
@@ -49,62 +60,19 @@ export default function Stories({ stories = [], featuredStory }) {
       <Flex role="main" direction="column" align="center">
         <Header />
         <Box maxW="container.xl2" w="full">
-          <Box pos="relative">
-            <Box w="full" h={{ base: 'full', xl: 'full' }} pos="relative">
-              <NextImage
-                src={featStory.featuredPhoto.url}
-                width={featStory.featuredPhoto.width}
-                height={featStory.featuredPhoto.height}
-                layout="responsive"
-                alt={featStory.featuredPhoto.alt}
-              />
-              <VStack
-                pos={{ base: 'relative', md: 'absolute' }}
-                direction="column"
-                top="0"
-                zIndex="overlay"
-                boxSizing="content-box"
-                align="flex-start"
-                p={{ base: 10, lg: 24, xl: 32 }}
-                maxW={{ xl: '387px' }}
-                spacing="5"
-                bg={{ base: 'primary.pureblack', md: 'transparent' }}
-              >
-                <Heading as="h4" variant="h4" color="primary.purewhite">
-                  Last month&apos;s featured story
-                </Heading>
-                <Heading as="h1" variant="h1" color="primary.purewhite">
-                  {featStory.title}
-                </Heading>
-                <Text color="primary.lightgrey" fontSize="13px">
-                  {featStory.date}
-                  <chakra.span ml="3" color="primary.purewhite">
-                    By {featStory.author.name}
-                  </chakra.span>
-                </Text>
-                <Text color="primary.lightgrey">{featStory.featuredText}</Text>
-                <CustomLink
-                  href="#"
-                  arrow="true"
-                  alignSelf="flex-start"
-                  variant="dark"
-                >
-                  Read the story
-                </CustomLink>
-              </VStack>
-            </Box>
-          </Box>
+          {featStory && (
+            <FeaturedStory
+              imageMobile={featStoryImageMobile}
+              imageTablet={featStoryImageTablet}
+              imageDesktop={featStoryImageDesktop}
+              data={featStory}
+            />
+          )}
 
           <SimpleGrid minChildWidth="300px" spacing="0">
             {stories.map((story) => (
               <Box bg="gray.800" key={story.id} color="white" pos="relative">
-                <Box
-                  w="full"
-                  zIndex="base"
-                  pos="relative"
-                  bg="black"
-                  overflow="hidden"
-                >
+                <Box w="full" zIndex="base" pos="relative" bg="black">
                   <Box pos="relative" h={{ base: '375px', md: 'full' }}>
                     {storyImageLayout === 'fill' ? (
                       <NextImage
@@ -112,7 +80,7 @@ export default function Stories({ stories = [], featuredStory }) {
                         layout={storyImageLayout}
                         objectFit="cover"
                         objectPosition="center"
-                        alt={story.photo.alt}
+                        alt={story.alt}
                       />
                     ) : (
                       <NextImage
@@ -120,10 +88,11 @@ export default function Stories({ stories = [], featuredStory }) {
                         layout={storyImageLayout}
                         width={story.photo.width}
                         height={story.photo.height}
-                        alt={story.photo.alt}
+                        alt={story.title}
                       />
                     )}
                   </Box>
+
                   <Box
                     w="full"
                     zIndex="overlay"
@@ -135,7 +104,7 @@ export default function Stories({ stories = [], featuredStory }) {
                     bgGradient="linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)"
                   >
                     <Text color="white">{story.date}</Text>
-                    <Heading as="h3" variant="h3">
+                    <Heading as="h2" variant="h3">
                       {story.title}
                     </Heading>
                     <Text color="white">By {story.author.name}</Text>

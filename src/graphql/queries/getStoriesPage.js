@@ -69,10 +69,15 @@ const GET_STORIES_PAGE_QUERY = gql`
         }
       }
       featuredText
-      featuredPhoto {
-        url
-        width
-        height
+      featPhotos {
+        id
+        alt
+        image {
+          url
+          width
+          height
+        }
+        imageVersion
       }
     }
   }
