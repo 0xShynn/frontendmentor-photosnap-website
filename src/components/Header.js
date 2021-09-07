@@ -5,14 +5,15 @@ import { Box, Divider, Flex, HStack, VStack } from '@chakra-ui/layout'
 import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
 import CloseIcon from '../assets/ui/CloseIcon'
 import HamburgerMenuIcon from '../assets/ui/HamburgerMenuIcon'
-import navLinks from '../constants/navLinks'
 
 import CustomLink from './utils/CustomLink'
 
-const Header = () => {
+const Header = ({ data }) => {
   const { isOpen, onToggle } = useDisclosure()
 
   const navMenuSharedStyling = { fontSize: '15px', letterSpacing: '2.5px' }
+
+  const navLinks = data.navigation.pages ?? []
 
   return (
     <Box bg="white" w="full">
@@ -32,11 +33,15 @@ const Header = () => {
           </Box>
         </CustomLink>
 
-        <HStack spacing="8" display={{ base: 'none', md: 'flex' }}>
-          <CustomLink href="/stories">Stories</CustomLink>
-          <CustomLink href="/">Features</CustomLink>
-          <CustomLink href="/">Pricing</CustomLink>
-        </HStack>
+        {navLinks.length > 0 ? (
+          <HStack spacing="8" display={{ base: 'none', md: 'flex' }}>
+            {navLinks.map((link) => (
+              <CustomLink href={`/${link.slug}`} key={link.slug}>
+                {link.title}
+              </CustomLink>
+            ))}
+          </HStack>
+        ) : null}
 
         <Box display={{ base: 'none', md: 'flex' }}>
           <CustomLink href="/" variant="lightBtn">
@@ -66,31 +71,34 @@ const Header = () => {
           bg="rgba(0,0,0,0.5)"
           h="100vh"
           pos="absolute"
+          zIndex="overlay"
           display={{ md: 'none' }}
         >
-          <Box bg="white" w="full" p="8">
-            <VStack spacing="5">
-              {navLinks.slice(1).map((link, index) => (
+          {navLinks.length > 0 ? (
+            <Box bg="white" w="full" p="8">
+              <VStack spacing="5">
+                {navLinks.map((link) => (
+                  <CustomLink
+                    key={link.slug}
+                    href={link.slug}
+                    {...navMenuSharedStyling}
+                  >
+                    {link.title}
+                  </CustomLink>
+                ))}
+                <Divider borderColor="primary.pureblack" opacity="0.25" />
                 <CustomLink
-                  key={index}
-                  href={link.url}
+                  href="/"
+                  variant="lightBtn"
+                  w={{ base: 'full', sm: '300px' }}
+                  py="4"
                   {...navMenuSharedStyling}
                 >
-                  {link.label}
+                  Get an invite
                 </CustomLink>
-              ))}
-              <Divider borderColor="primary.pureblack" opacity="0.25" />
-              <CustomLink
-                href="/"
-                variant="lightBtn"
-                w={{ base: 'full', sm: '300px' }}
-                py="4"
-                {...navMenuSharedStyling}
-              >
-                Get an invite
-              </CustomLink>
-            </VStack>
-          </Box>
+              </VStack>
+            </Box>
+          ) : null}
         </Box>
       ) : null}
     </Box>

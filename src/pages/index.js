@@ -6,16 +6,16 @@ import Header from '../components/Header'
 import { getHomePage } from '../graphql/queries/getHomePage'
 
 export const getStaticProps = async () => {
-  const data = await getHomePage()
+  const { page } = await getHomePage()
 
   return {
     props: {
-      data,
+      page,
     },
   }
 }
 
-export default function Home({}) {
+export default function Home({ page }) {
   return (
     <Box>
       <Head>
@@ -25,7 +25,7 @@ export default function Home({}) {
       </Head>
 
       <Flex role="main" direction="column">
-        <Header />
+        <Header data={page.header} />
         <Box
           bg="gray.300"
           p="6"

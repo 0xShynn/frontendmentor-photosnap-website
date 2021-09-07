@@ -31,7 +31,7 @@ export const getStaticProps = async () => {
   }
 }
 
-export default function Stories({ stories = [], featuredStory }) {
+export default function Stories({ page, stories = [], featuredStory }) {
   const storyImageLayout = useBreakpointValue({
     base: 'fill',
     md: 'responsive',
@@ -60,7 +60,7 @@ export default function Stories({ stories = [], featuredStory }) {
       </Head>
 
       <Flex role="main" direction="column" align="center">
-        <Header />
+        <Header data={page.header} />
         <Box maxW="container.xl2" w="full">
           {featStory && (
             <FeaturedStory
@@ -71,93 +71,96 @@ export default function Stories({ stories = [], featuredStory }) {
             />
           )}
 
-          <SimpleGrid minChildWidth="300px" spacing="0">
-            {stories.map((story) => (
-              <Box
-                bg="gray.800"
-                key={story.id}
-                color="white"
-                pos="relative"
-                cursor="pointer"
-                transition="transform 400ms"
-                willChange="tranform"
-                _hover={{
-                  transform: { base: null, md: 'translateY(-20px)' },
-                  transition: 'transform 200ms',
-                  _after: {
-                    content: `" "`,
-                    pos: 'absolute',
-                    bottom: '0',
-                    w: 'full',
-                    h: '6px',
-                    bgGradient: {
-                      base: null,
-                      md: 'linear-gradient(1deg, rgba(255,197,147,1) 0%, rgba(188,113,152,1) 53%, rgba(90,119,255,1) 100%);',
-                    },
-                    transition: 'opacity 200ms',
-                  },
-                }}
-              >
-                <Link href="/" passHref>
-                  <Box w="full" zIndex="base" pos="relative" bg="black">
-                    <Box pos="relative" h={{ base: '375px', md: 'full' }}>
-                      {storyImageLayout === 'fill' ? (
-                        <NextImage
-                          src={story.photo.url}
-                          layout={storyImageLayout}
-                          objectFit="cover"
-                          objectPosition="center"
-                          alt={story.alt}
-                        />
-                      ) : (
-                        <NextImage
-                          src={story.photo.url}
-                          layout={storyImageLayout}
-                          width={story.photo.width}
-                          height={story.photo.height}
-                          alt={story.title}
-                        />
-                      )}
-                    </Box>
-
-                    <Box
-                      w="full"
-                      zIndex="overlay"
-                      pos="absolute"
-                      bottom="0"
-                      px="10"
-                      py="40"
-                      pb="10"
-                      bgGradient="linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)"
-                    >
-                      <Text color="white" fontSize="13px">
-                        {getFormattedDate(story.date)}
-                      </Text>
-                      <Heading as="h2" variant="h3">
-                        {story.title}
-                      </Heading>
-                      <Text color="white" fontSize="13px">
-                        By {story.author.name}
-                      </Text>
-                      <Divider borderColor="white" opacity="0.2" my="4" />
-                      <Flex justify="space-between">
-                        <CustomLink href={`/stories/${story.slug}`}>
-                          Read story
-                        </CustomLink>
-                        <Box w="42px">
-                          <Arrow />
+          {stories.length > 0 ? (
+            <SimpleGrid minChildWidth="300px" spacing="0">
+              {stories.map((story) => {
+                const storySlug = `/stories/${story.slug}`
+                return (
+                  <Box
+                    bg="gray.800"
+                    key={story.id}
+                    color="white"
+                    pos="relative"
+                    cursor="pointer"
+                    transition="transform 400ms"
+                    willChange="tranform"
+                    _hover={{
+                      transform: { base: null, md: 'translateY(-20px)' },
+                      transition: 'transform 200ms',
+                      _after: {
+                        content: `" "`,
+                        pos: 'absolute',
+                        bottom: '0',
+                        w: 'full',
+                        h: '6px',
+                        bgGradient: {
+                          base: null,
+                          md: 'linear-gradient(1deg, rgba(255,197,147,1) 0%, rgba(188,113,152,1) 53%, rgba(90,119,255,1) 100%);',
+                        },
+                        transition: 'opacity 200ms',
+                      },
+                    }}
+                  >
+                    <Link href={storySlug} passHref>
+                      <Box w="full" zIndex="base" pos="relative" bg="black">
+                        <Box pos="relative" h={{ base: '375px', md: 'full' }}>
+                          {storyImageLayout === 'fill' ? (
+                            <NextImage
+                              src={story.photo.url}
+                              layout={storyImageLayout}
+                              objectFit="cover"
+                              objectPosition="center"
+                              alt={story.alt}
+                            />
+                          ) : (
+                            <NextImage
+                              src={story.photo.url}
+                              layout={storyImageLayout}
+                              width={story.photo.width}
+                              height={story.photo.height}
+                              alt={story.title}
+                            />
+                          )}
                         </Box>
-                      </Flex>
-                    </Box>
+
+                        <Box
+                          w="full"
+                          zIndex="overlay"
+                          pos="absolute"
+                          bottom="0"
+                          px="10"
+                          py="40"
+                          pb="10"
+                          bgGradient="linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)"
+                        >
+                          <Text color="white" fontSize="13px">
+                            {getFormattedDate(story.date)}
+                          </Text>
+                          <Heading as="h2" variant="h3">
+                            {story.title}
+                          </Heading>
+                          <Text color="white" fontSize="13px">
+                            By {story.author.name}
+                          </Text>
+                          <Divider borderColor="white" opacity="0.2" my="4" />
+                          <Flex justify="space-between">
+                            <CustomLink href={storySlug}>Read story</CustomLink>
+                            <Box w="42px">
+                              <Arrow />
+                            </Box>
+                          </Flex>
+                        </Box>
+                      </Box>
+                    </Link>
                   </Box>
-                </Link>
-              </Box>
-            ))}
-          </SimpleGrid>
+                )
+              })}
+            </SimpleGrid>
+          ) : null}
         </Box>
       </Flex>
 
-      <Footer />
+      <Footer data={page.footer} />
     </Box>
   )
 }

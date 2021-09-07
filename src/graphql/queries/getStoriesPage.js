@@ -16,6 +16,7 @@ const GET_STORIES_PAGE_QUERY = gql`
           pages {
             title
             slug
+            id
           }
           slug
         }
@@ -29,6 +30,7 @@ const GET_STORIES_PAGE_QUERY = gql`
           pages {
             title
             slug
+            id
           }
         }
         socialLinks {

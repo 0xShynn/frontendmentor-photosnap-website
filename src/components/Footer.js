@@ -12,7 +12,7 @@ import navLinks from '../constants/navLinks'
 
 import CustomLink from './utils/CustomLink'
 
-const Footer = () => {
+const Footer = ({}) => {
   const socialIcons = [
     <IconFacebook />,
     <IconYoutube />,
