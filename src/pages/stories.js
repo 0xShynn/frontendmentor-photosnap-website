@@ -63,7 +63,7 @@ export default function Stories({ page, stories = [], featuredStory }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex role="main" direction="column" align="center">
+      <Flex direction="column" align="center">
         <Box maxW="container.xl2" w="full">
           {featStory && (
             <FeaturedStory
@@ -113,7 +113,7 @@ export default function Stories({ page, stories = [], featuredStory }) {
                               layout={storyImageLayout}
                               objectFit="cover"
                               objectPosition="center"
-                              alt={story.alt}
+                              alt={story.title}
                             />
                           ) : (
                             <NextImage

@@ -5,12 +5,14 @@ import Header from './Header'
 
 export default function Layout(props) {
   return (
-    <Box>
+    <>
       <Box role="main">
-        <Header data={props.data.header} />
-        {props.children}
+        <Box>
+          <Header data={props.data.header} />
+          {props.children}
+        </Box>
       </Box>
       <Footer data={props.data.footer} />
-    </Box>
+    </>
   )
 }

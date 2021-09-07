@@ -1,25 +1,15 @@
 /* eslint-disable react/jsx-key */
-import Icon from '@chakra-ui/icon'
-import { Box, Flex, HStack, Stack, Text } from '@chakra-ui/layout'
+import { Box, Flex, HStack, Link, Stack, Text } from '@chakra-ui/layout'
+import NextImage from 'next/image'
 
 import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
-import IconFacebook from '../assets/icons/socials/IconFacebook'
-import IconInstagram from '../assets/icons/socials/IconInstagram'
-import IconPinterest from '../assets/icons/socials/IconPinterest'
-import IconTwitter from '../assets/icons/socials/IconTwitter'
-import IconYoutube from '../assets/icons/socials/IconYoutube'
-import navLinks from '../constants/navLinks'
 
 import CustomLink from './utils/CustomLink'
 
-const Footer = ({}) => {
-  const socialIcons = [
-    <IconFacebook />,
-    <IconYoutube />,
-    <IconTwitter />,
-    <IconPinterest />,
-    <IconInstagram />,
-  ]
+const Footer = ({ data }) => {
+  const navLinks = data?.navigation?.pages ?? []
+  const socialLinks = data?.socialLinks ?? []
+  const callToAction = data?.link ?? {}
 
   return (
     <Box
@@ -42,68 +32,87 @@ const Footer = ({}) => {
             </Box>
           </CustomLink>
 
-          <Flex direction={{ base: 'column', md: 'column-reverse' }}>
-            <HStack spacing="4" mb={{ base: 12, md: 0 }}>
-              {socialIcons.map((icon, index) => (
-                <Icon
-                  key={index}
-                  boxSize="20px"
-                  // width={{ base: '24px', sm: '30px', md: '20px' }}
-                  color="white"
-                  cursor="pointer"
-                  _hover={{ color: 'red.100' }}
-                >
-                  {icon}
-                </Icon>
-              ))}
-            </HStack>
+          {socialLinks || navLinks ? (
+            <Flex direction={{ base: 'column', md: 'column-reverse' }}>
+              {socialLinks ? (
+                <HStack spacing="4" mb={{ base: 12, md: 0 }}>
+                  {socialLinks.map((icon, index) => (
+                    <Link href={icon.url} key={index} cursor="pointer">
+                      <Box boxSize="20px">
+                        <NextImage
+                          src={icon.logo.url}
+                          layout="responsive"
+                          width={icon.logo.width}
+                          height={icon.logo.height}
+                          alt={icon.alt}
+                        />
+                      </Box>
+                    </Link>
+                  ))}
+                </HStack>
+              ) : null}
 
-            <Stack
-              spacing="4"
-              mb={{ base: 12, md: 20 }}
-              direction={{ base: 'column', md: 'row' }}
-              display={{ base: 'flex', xl: 'none' }}
-            >
-              {navLinks.map((link, index) => (
-                <CustomLink key={index} href={link.url} color="white">
-                  {link.label}
-                </CustomLink>
-              ))}
-            </Stack>
-          </Flex>
+              {navLinks ? (
+                <Stack
+                  spacing="4"
+                  mb={{ base: 12, md: 20 }}
+                  direction={{ base: 'column', md: 'row' }}
+                  display={{ base: 'flex', xl: 'none' }}
+                >
+                  {navLinks.map((link, index) => (
+                    <CustomLink
+                      key={index}
+                      href={`/${link.slug === 'home' ? '' : link.slug}`}
+                      color="white"
+                    >
+                      {link.title}
+                    </CustomLink>
+                  ))}
+                </Stack>
+              ) : null}
+            </Flex>
+          ) : null}
         </Flex>
 
-        <Stack
-          spacing="4"
-          mb={{ base: 12, md: 20, xl: 0 }}
-          direction="column"
-          justify="flex-start"
-          align="flex-start"
-          flex="1"
-          display={{ base: 'none', xl: 'flex' }}
-          ml="110px"
-        >
-          {navLinks.map((link, index) => (
-            <CustomLink key={index} href={link.url} color="white">
-              {link.label}
-            </CustomLink>
-          ))}
-        </Stack>
+        {navLinks ? (
+          <Stack
+            spacing="4"
+            mb={{ base: 12, md: 20, xl: 0 }}
+            direction="column"
+            justify="flex-start"
+            align="flex-start"
+            flex="1"
+            display={{ base: 'none', xl: 'flex' }}
+            ml="110px"
+          >
+            {navLinks.map((link, index) => (
+              <CustomLink
+                key={index}
+                href={`/${link.slug === 'home' ? '' : link.slug}`}
+                color="white"
+              >
+                {link.title}
+              </CustomLink>
+            ))}
+          </Stack>
+        ) : null}
 
         <Flex
           direction="column"
           align={{ base: 'center', md: 'flex-end' }}
           justify={{ md: 'space-between' }}
         >
-          <CustomLink
-            href="/"
-            variant="dark"
-            arrow="true"
-            my={{ base: 6, md: 0 }}
-            p={{ base: 2, md: 0 }}
-          >
-            Get an invite
-          </CustomLink>
+          {callToAction ? (
+            <CustomLink
+              href={callToAction.href}
+              variant="dark"
+              arrow="true"
+              my={{ base: 6, md: 0 }}
+              p={{ base: 2, md: 0 }}
+            >
+              {callToAction.label}
+            </CustomLink>
+          ) : null}
           <Text color="primary.lightgrey">
             Copyright 2019. All Rights Reserved
           </Text>

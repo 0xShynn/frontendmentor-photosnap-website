@@ -29,8 +29,11 @@ const GET_HEADER_FOOTER = gql`
     socialLinks {
       label
       alt
+      url
       logo {
         url
+        width
+        height
       }
     }
   }

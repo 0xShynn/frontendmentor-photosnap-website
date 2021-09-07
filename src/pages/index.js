@@ -28,7 +28,7 @@ export default function Home({ page }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex role="main" direction="column">
+      <Flex direction="column">
         <Box
           bg="gray.300"
           p="6"
