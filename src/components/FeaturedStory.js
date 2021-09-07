@@ -2,6 +2,8 @@ import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
 import { chakra } from '@chakra-ui/system'
 import NextImage from 'next/image'
 
+import getFormattedDate from '../utils/formatDate'
+
 import CustomLink from './utils/CustomLink'
 
 const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
@@ -67,7 +69,7 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
             {data.title}
           </Heading>
           <Text color="primary.lightgrey" fontSize="13px">
-            {data.date}
+            {getFormattedDate(data.date)}
             <chakra.span ml="3" color="primary.purewhite">
               By {data.author.name}
             </chakra.span>
