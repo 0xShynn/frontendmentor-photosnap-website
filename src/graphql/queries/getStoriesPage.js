@@ -2,45 +2,13 @@ import { gql } from 'graphql-request'
 
 import gqlClient from '../config/graphQLClient'
 
+import GET_HEADER_FOOTER from './getHeaderFooter'
+
 const GET_STORIES_PAGE_QUERY = gql`
   query StoriesPage {
     page(where: { slug: "stories" }) {
       id
-      header {
-        link {
-          label
-          slug
-          href
-        }
-        navigation {
-          pages {
-            title
-            slug
-            id
-          }
-          slug
-        }
-      }
-      footer {
-        link {
-          href
-          label
-        }
-        navigation {
-          pages {
-            title
-            slug
-            id
-          }
-        }
-        socialLinks {
-          label
-          alt
-          logo {
-            url
-          }
-        }
-      }
+      ${GET_HEADER_FOOTER}
     }
     stories: stories(where: { isFeatured: false }) {
       title

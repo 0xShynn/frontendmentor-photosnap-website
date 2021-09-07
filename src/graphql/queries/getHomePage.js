@@ -2,6 +2,8 @@ import { gql } from 'graphql-request'
 
 import gqlClient from '../config/graphQLClient'
 
+import GET_HEADER_FOOTER from './getHeaderFooter'
+
 const GET_HOME_PAGE_QUERY = gql`
   query HomePage {
     page(where: { slug: "home" }) {
@@ -15,39 +17,7 @@ const GET_HOME_PAGE_QUERY = gql`
           url
         }
       }
-      header {
-        link {
-          label
-          slug
-          href
-        }
-        navigation {
-          pages {
-            title
-            slug
-          }
-          slug
-        }
-      }
-      footer {
-        link {
-          href
-          label
-        }
-        navigation {
-          pages {
-            title
-            slug
-          }
-        }
-        socialLinks {
-          label
-          alt
-          logo {
-            url
-          }
-        }
-      }
+      ${GET_HEADER_FOOTER}
     }
   }
 `

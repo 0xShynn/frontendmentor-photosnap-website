@@ -8,12 +8,12 @@ import HamburgerMenuIcon from '../assets/ui/HamburgerMenuIcon'
 
 import CustomLink from './utils/CustomLink'
 
-const Header = ({ data }) => {
+const Header = ({ data = {} }) => {
   const { isOpen, onToggle } = useDisclosure()
 
   const navMenuSharedStyling = { fontSize: '15px', letterSpacing: '2.5px' }
 
-  const navLinks = data.navigation.pages ?? []
+  const navLinks = data?.navigation?.pages ?? []
 
   return (
     <Box bg="white" w="full">
