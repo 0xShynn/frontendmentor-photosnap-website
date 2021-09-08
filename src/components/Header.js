@@ -1,6 +1,7 @@
 import { IconButton } from '@chakra-ui/button'
 import { useDisclosure } from '@chakra-ui/hooks'
 import { Box, Divider, Flex, HStack, VStack } from '@chakra-ui/layout'
+import PropTypes from 'prop-types'
 
 import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
 import CloseIcon from '../assets/ui/CloseIcon'
@@ -8,7 +9,7 @@ import HamburgerMenuIcon from '../assets/ui/HamburgerMenuIcon'
 
 import CustomLink from './utils/CustomLink'
 
-const Header = ({ data = {} }) => {
+const Header = ({ data }) => {
   const { isOpen, onToggle } = useDisclosure()
 
   const navMenuSharedStyling = { fontSize: '15px', letterSpacing: '2.5px' }
@@ -103,6 +104,14 @@ const Header = ({ data = {} }) => {
       ) : null}
     </Box>
   )
+}
+
+Header.propTypes = {
+  data: PropTypes.shape({
+    navigation: PropTypes.shape({
+      pages: PropTypes.array,
+    }),
+  }).isRequired,
 }
 
 export default Header

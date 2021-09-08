@@ -1,6 +1,7 @@
 import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
 import { chakra } from '@chakra-ui/system'
 import NextImage from 'next/image'
+import PropTypes from 'prop-types'
 
 import getFormattedDate from '../utils/formatDate'
 
@@ -77,7 +78,7 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
           <Text color="primary.lightgrey">{data.featuredText ?? null}</Text>
           <CustomLink
             href="#"
-            arrow="true"
+            arrow={true}
             alignSelf="flex-start"
             variant="dark"
           >
@@ -87,6 +88,41 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
       </Box>
     </Box>
   )
+}
+
+FeaturedStory.propTypes = {
+  data: PropTypes.shape({
+    author: PropTypes.shape({
+      name: PropTypes.string,
+    }).isRequired,
+    date: PropTypes.string.isRequired,
+    featuredText: PropTypes.string,
+    title: PropTypes.string.isRequired,
+  }),
+  imageDesktop: PropTypes.shape({
+    alt: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      height: PropTypes.number,
+      url: PropTypes.string,
+      width: PropTypes.number,
+    }).isRequired,
+  }).isRequired,
+  imageMobile: PropTypes.shape({
+    alt: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      height: PropTypes.number,
+      url: PropTypes.string,
+      width: PropTypes.number,
+    }).isRequired,
+  }),
+  imageTablet: PropTypes.shape({
+    alt: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      height: PropTypes.number,
+      url: PropTypes.string,
+      width: PropTypes.number,
+    }).isRequired,
+  }),
 }
 
 export default FeaturedStory

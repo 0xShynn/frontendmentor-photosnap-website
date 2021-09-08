@@ -1,10 +1,11 @@
 import { Box, Link } from '@chakra-ui/layout'
 import NextLink from 'next/link'
+import PropTypes from 'prop-types'
 
 import Arrow from '../../assets/arrow'
 
 const CustomLink = (props) => {
-  const { href, variant, arrow, arrowmargin } = props
+  const { href, variant, arrow, arrowMargin, ...rest } = props
   return (
     <NextLink href={href} passHref>
       <Link
@@ -19,7 +20,7 @@ const CustomLink = (props) => {
             transition: 'transform 125ms',
           },
         }}
-        {...props}
+        {...rest}
       >
         <Box className="child" mx="auto">
           {props.children}
@@ -27,7 +28,7 @@ const CustomLink = (props) => {
         {arrow && (
           <Box
             w="42px"
-            ml={!arrowmargin ? 3 : arrowmargin}
+            ml={!arrowMargin ? 3 : arrowMargin}
             pt="1px"
             className="arrow"
             transition="transform 350ms"
@@ -39,6 +40,14 @@ const CustomLink = (props) => {
       </Link>
     </NextLink>
   )
+}
+
+CustomLink.propTypes = {
+  arrow: PropTypes.bool,
+  arrowMargin: PropTypes.number,
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired,
+  variant: PropTypes.string,
 }
 
 export default CustomLink

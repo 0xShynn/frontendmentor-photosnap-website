@@ -37,7 +37,7 @@ const DesignSystem = () => {
           <Link href="#" variant="light">
             Link 2
           </Link>
-          <CustomLink variant="light" href="#" arrow="true">
+          <CustomLink variant="light" href="#" arrow={true}>
             Link 3
           </CustomLink>
         </HStack>
@@ -46,7 +46,7 @@ const DesignSystem = () => {
           <Link href="#" variant="dark">
             Link 5
           </Link>
-          <CustomLink variant="dark" href="#" arrow="true">
+          <CustomLink variant="dark" href="#" arrow={true}>
             View the stories
           </CustomLink>
         </HStack>

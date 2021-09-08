@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 import { useBreakpointValue } from '@chakra-ui/media-query'
 import NextImage from 'next/image'
+import PropTypes from 'prop-types'
 
 import { photoSnapGradient } from '../constants/styleToken'
 
@@ -80,7 +81,7 @@ const Hero = ({
             <CustomLink
               href={link.href}
               variant={themeColor === 'dark' ? 'dark' : 'light'}
-              arrow="true"
+              arrow={true}
               alignSelf="flex-start"
             >
               {link.label}
@@ -90,6 +91,24 @@ const Hero = ({
       </Box>
     </Flex>
   )
+}
+
+Hero.propTypes = {
+  contentSide: PropTypes.oneOf(['left', 'right']),
+  image: PropTypes.shape({
+    alt: PropTypes.string,
+    height: PropTypes.number,
+    url: PropTypes.string,
+    width: PropTypes.number,
+  }).isRequired,
+  link: PropTypes.shape({
+    href: PropTypes.string,
+    label: PropTypes.string,
+  }),
+  noGradient: PropTypes.bool.isRequired,
+  subtitle: PropTypes.string,
+  themeColor: PropTypes.oneOf(['light', 'dark']),
+  title: PropTypes.string.isRequired,
 }
 
 export default Hero

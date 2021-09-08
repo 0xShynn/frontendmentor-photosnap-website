@@ -1,5 +1,6 @@
 import { Box, Text } from '@chakra-ui/layout'
 import { GraphQLClient, gql } from 'graphql-request'
+import PropTypes from 'prop-types'
 
 const client = new GraphQLClient(process.env.GRAPHCMS_PROJECT_API)
 
@@ -64,4 +65,13 @@ export default function Story({ story }) {
       <Text>{story.author.name}</Text>
     </Box>
   )
+}
+
+Story.propTypes = {
+  story: PropTypes.shape({
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }),
+    title: PropTypes.string.isRequired,
+  }),
 }

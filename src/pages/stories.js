@@ -1,5 +1,6 @@
 import { Box, Flex, SimpleGrid } from '@chakra-ui/layout'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import FeaturedStory from '../components/FeaturedStory'
 import Layout from '../components/Layout'
@@ -78,4 +79,13 @@ export default function Stories({ page, stories = [], featuredStory }) {
       </Flex>
     </Layout>
   )
+}
+
+Stories.propTypes = {
+  featuredStory: PropTypes.array.isRequired,
+  page: PropTypes.shape({
+    footer: PropTypes.object.isRequired,
+    header: PropTypes.object.isRequired,
+  }).isRequired,
+  stories: PropTypes.array,
 }

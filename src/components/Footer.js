@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import { Box, Flex, HStack, Link, Stack, Text } from '@chakra-ui/layout'
 import NextImage from 'next/image'
+import PropTypes from 'prop-types'
 
 import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
 
@@ -106,7 +107,7 @@ const Footer = ({ data }) => {
             <CustomLink
               href={callToAction.href}
               variant="dark"
-              arrow="true"
+              arrow={true}
               my={{ base: 6, md: 0 }}
               p={{ base: 2, md: 0 }}
             >
@@ -120,6 +121,16 @@ const Footer = ({ data }) => {
       </Flex>
     </Box>
   )
+}
+
+Footer.propTypes = {
+  data: PropTypes.shape({
+    link: PropTypes.object,
+    navigation: PropTypes.shape({
+      pages: PropTypes.array,
+    }),
+    socialLinks: PropTypes.array,
+  }).isRequired,
 }
 
 export default Footer

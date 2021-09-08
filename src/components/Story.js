@@ -2,6 +2,7 @@ import { Box, Divider, Flex, Heading, Text } from '@chakra-ui/layout'
 import { useBreakpointValue } from '@chakra-ui/media-query'
 import NextImage from 'next/image'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 import Arrow from '../assets/arrow'
 import CustomLink from '../components/utils/CustomLink'
@@ -84,6 +85,18 @@ const Story = ({ slug, photo, date, title, author }) => {
       </Link>
     </Box>
   )
+}
+
+Story.propTypes = {
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  photo: PropTypes.shape({
+    height: PropTypes.number,
+    url: PropTypes.string.isRequired,
+    width: PropTypes.number,
+  }),
+  slug: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default Story

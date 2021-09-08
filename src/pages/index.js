@@ -1,5 +1,6 @@
 import { Box, Flex } from '@chakra-ui/layout'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
@@ -18,7 +19,6 @@ export const getStaticProps = async () => {
 export default function Home({ page }) {
   const heroes = page?.heroes ?? []
 
-  console.log(page)
   return (
     <Layout
       data={{
@@ -50,4 +50,12 @@ export default function Home({ page }) {
       </Flex>
     </Layout>
   )
+}
+
+Home.propTypes = {
+  page: PropTypes.shape({
+    footer: PropTypes.object.isRequired,
+    header: PropTypes.object.isRequired,
+    heroes: PropTypes.array,
+  }),
 }

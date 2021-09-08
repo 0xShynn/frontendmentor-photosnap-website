@@ -1,5 +1,6 @@
 import { Box, Text } from '@chakra-ui/layout'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 import Layout from '../components/Layout'
 import { getStoriesPage } from '../graphql/queries/getStoriesPage'
@@ -35,6 +36,13 @@ const Pricing = ({ page }) => {
       </Box>
     </Layout>
   )
+}
+
+Pricing.propTypes = {
+  page: PropTypes.shape({
+    footer: PropTypes.object.isRequired,
+    header: PropTypes.object.isRequired,
+  }).isRequired,
 }
 
 export default Pricing

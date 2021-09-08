@@ -1,6 +1,9 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
+    "react/no-unused-prop-types": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "error",
     "react/jsx-no-undef": "warn",
     "no-unused-vars": "error",
     "import/no-unresolved": "error",
