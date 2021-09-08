@@ -7,7 +7,7 @@ import FeaturesContainer from '../components/FeaturesContainer'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import Story from '../components/Story'
-import { getHomePage } from '../graphql/queries/getHomePage'
+import { getHomePage } from '../graphql/queries/pages/getHomePage'
 
 export const getStaticProps = async () => {
   const { page } = await getHomePage()

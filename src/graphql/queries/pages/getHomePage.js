@@ -1,9 +1,8 @@
 import { gql } from 'graphql-request'
 
-import gqlClient from '../config/graphQLClient'
-
-import GET_FOOTER from './components/getFooter'
-import GET_HEADER from './components/getHeader'
+import gqlClient from '../../config/graphQLClient'
+import GET_FOOTER from '../components/getFooter'
+import GET_HEADER from '../components/getHeader'
 
 const GET_HOME_PAGE_QUERY = gql`
   query HomePage {

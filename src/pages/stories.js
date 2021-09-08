@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import FeaturedStory from '../components/FeaturedStory'
 import Layout from '../components/Layout'
 import Story from '../components/Story'
-import { getStoriesPage } from '../graphql/queries/getStoriesPage'
+import { getStoriesPage } from '../graphql/queries/pages/getStoriesPage'
 
 export const getStaticProps = async () => {
   const { page, stories, featuredStory } = await getStoriesPage()
