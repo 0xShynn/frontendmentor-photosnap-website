@@ -1,23 +1,29 @@
-import { Box, Text } from '@chakra-ui/layout'
+import { Box } from '@chakra-ui/layout'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
+import Feature from '../components/Feature'
+import FeaturesContainer from '../components/FeaturesContainer'
+import Hero from '../components/Hero'
 import Layout from '../components/Layout'
-import { getStoriesPage } from '../graphql/queries/getStoriesPage'
+import { getFeaturesPage } from '../graphql/queries/getFeaturesPage'
 
 export const getStaticProps = async () => {
-  const { page, stories, featuredStory } = await getStoriesPage()
+  const { page } = await getFeaturesPage()
 
   return {
     props: {
       page,
-      stories,
-      featuredStory,
     },
   }
 }
 
 const Features = ({ page }) => {
+  console.log(page)
+
+  const features = page?.features ?? []
+  const hero = page?.heroes[0] ?? {}
+
   return (
     <Layout
       data={{
@@ -31,10 +37,29 @@ const Features = ({ page }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box bg="blue.100">
-        <Box bg="red.100" maxW="800px" mx="auto">
-          <Text>Features page</Text>
-        </Box>
+      <Box>
+        {hero && (
+          <Hero
+            title={hero.title}
+            subtitle={hero.subtitle}
+            contentSide={hero.contentSide}
+            themeColor={hero.theme}
+            image={hero.image}
+          />
+        )}
+
+        {features.length > 0 ? (
+          <FeaturesContainer columns={{ base: 1, md: 2, xl: 3 }}>
+            {features.map((feature) => (
+              <Feature
+                title={feature.title}
+                subtitle={feature.subtitle}
+                icon={feature.icon}
+                key={feature.id}
+              />
+            ))}
+          </FeaturesContainer>
+        ) : null}
       </Box>
     </Layout>
   )
@@ -42,8 +67,10 @@ const Features = ({ page }) => {
 
 Features.propTypes = {
   page: PropTypes.shape({
+    features: PropTypes.array,
     footer: PropTypes.object.isRequired,
     header: PropTypes.object.isRequired,
+    heroes: PropTypes.array,
   }),
 }
 

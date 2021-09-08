@@ -28,16 +28,18 @@ const Hero = ({
         md: contentSide === 'left' ? 'row-reverse' : 'row',
       }}
     >
-      <Box w="full" pos="relative">
-        <NextImage
-          src={image.url}
-          layout={imageLayout}
-          width={imageLayout === 'responsive' ? image.width : 0}
-          height={imageLayout === 'responsive' ? image.height : 0}
-          objectFit="cover"
-          alt={image.alt}
-        />
-      </Box>
+      {image && (
+        <Box w="full" pos="relative">
+          <NextImage
+            src={image.url}
+            layout={imageLayout}
+            width={imageLayout === 'responsive' ? image.width : 0}
+            height={imageLayout === 'responsive' ? image.height : 0}
+            objectFit="cover"
+            alt={image.alt}
+          />
+        </Box>
+      )}
 
       <Box
         bg={themeColor === 'dark' ? 'primary.pureblack' : 'primary.purewhite'}
@@ -83,14 +85,16 @@ const Hero = ({
             >
               {subtitle}
             </Text>
-            <CustomLink
-              href={link.href}
-              variant={themeColor === 'dark' ? 'dark' : 'light'}
-              arrow={true}
-              alignSelf="flex-start"
-            >
-              {link.label}
-            </CustomLink>
+            {link && (
+              <CustomLink
+                href={link.href}
+                variant={themeColor === 'dark' ? 'dark' : 'light'}
+                arrow={true}
+                alignSelf="flex-start"
+              >
+                {link.label}
+              </CustomLink>
+            )}
           </Flex>
         </Flex>
       </Box>
@@ -110,7 +114,7 @@ Hero.propTypes = {
     href: PropTypes.string,
     label: PropTypes.string,
   }),
-  noGradient: PropTypes.bool.isRequired,
+  noGradient: PropTypes.bool,
   subtitle: PropTypes.string,
   themeColor: PropTypes.oneOf(['light', 'dark']),
   title: PropTypes.string.isRequired,

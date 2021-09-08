@@ -1,8 +1,9 @@
-import { Box, Flex, SimpleGrid, Stack } from '@chakra-ui/layout'
+import { Box, Flex, SimpleGrid } from '@chakra-ui/layout'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
 import Feature from '../components/Feature'
+import FeaturesContainer from '../components/FeaturesContainer'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import Story from '../components/Story'
@@ -73,16 +74,7 @@ export default function Home({ page }) {
         ) : null}
 
         {features.length > 0 ? (
-          <Stack
-            bg="white"
-            justify="center"
-            align="center"
-            textAlign="center"
-            direction={{ base: 'column', lg: 'row' }}
-            py={{ base: 24, xl: 28 }}
-            px="12"
-            spacing="12"
-          >
+          <FeaturesContainer columns={{ base: 1, md: 1, lg: 3, xl: 3 }}>
             {features.map((feature) => (
               <Feature
                 title={feature.title}
@@ -91,7 +83,7 @@ export default function Home({ page }) {
                 key={feature.id}
               />
             ))}
-          </Stack>
+          </FeaturesContainer>
         ) : null}
       </Flex>
     </Layout>
