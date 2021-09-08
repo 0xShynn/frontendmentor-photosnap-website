@@ -30,7 +30,7 @@ const Pricing = ({ page }) => {
       </Head>
 
       <Box bg="blue.100">
-        <Box bg="red.100" maxW="800px" mx="auto">
+        <Box maxW="800px" mx="auto">
           <Text>Pricing Page</Text>
         </Box>
       </Box>

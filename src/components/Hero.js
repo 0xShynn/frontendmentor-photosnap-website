@@ -53,7 +53,7 @@ const Hero = ({
             display={{ base: 'block', md: 'none' }}
           />
         )}
-        <Flex py={{ base: 16, md: 40, xl: 56 }} direction="row">
+        <Flex py={{ base: 16, md: 40, xl: 44 }} direction="row">
           {!noGradient && (
             <Box
               bgGradient={photoSnapGradient}

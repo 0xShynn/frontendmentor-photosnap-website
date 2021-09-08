@@ -30,6 +30,18 @@ const GET_FEATURES_PAGE_QUERY = gql`
           height
         }
       }
+    isBannerDisplayed
+    banner {
+      title
+      link {
+        href
+        label
+      }
+      backgroundImage {
+        alt
+        url
+      }
+    }
     ${GET_HEADER_FOOTER}
   }
 }

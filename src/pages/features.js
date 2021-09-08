@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/layout'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
+import Banner from '../components/Banner'
 import Feature from '../components/Feature'
 import FeaturesContainer from '../components/FeaturesContainer'
 import Hero from '../components/Hero'
@@ -23,6 +24,10 @@ const Features = ({ page }) => {
 
   const features = page?.features ?? []
   const hero = page?.heroes[0] ?? {}
+  const banner = page?.banner ?? {}
+  const isBannerDisplayed = page?.isBannerDisplayed ?? false
+
+  console.log(isBannerDisplayed)
 
   return (
     <Layout
@@ -61,6 +66,14 @@ const Features = ({ page }) => {
           </FeaturesContainer>
         ) : null}
       </Box>
+
+      {isBannerDisplayed && (
+        <Banner
+          title={banner.title}
+          link={banner.link}
+          backgroundImage={banner.backgroundImage}
+        />
+      )}
     </Layout>
   )
 }
@@ -71,6 +84,8 @@ Features.propTypes = {
     footer: PropTypes.object.isRequired,
     header: PropTypes.object.isRequired,
     heroes: PropTypes.array,
+    banner: PropTypes.object,
+    isBannerDisplayed: PropTypes.bool.isRequired,
   }),
 }
 

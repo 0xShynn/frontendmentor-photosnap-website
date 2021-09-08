@@ -60,7 +60,7 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Story({ story }) {
   return (
-    <Box w="full" bg="red.100">
+    <Box w="full">
       <Text>{story.title}</Text>
       <Text>{story.author.name}</Text>
     </Box>
