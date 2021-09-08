@@ -1,23 +1,10 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Text,
-} from '@chakra-ui/layout'
-import { useBreakpointValue } from '@chakra-ui/media-query'
+import { Box, Flex, SimpleGrid } from '@chakra-ui/layout'
 import Head from 'next/head'
-import NextImage from 'next/image'
-import Link from 'next/link'
 
-import Arrow from '../assets/arrow'
 import FeaturedStory from '../components/FeaturedStory'
 import Layout from '../components/Layout'
-import CustomLink from '../components/utils/CustomLink'
-import { photoSnapGradient } from '../constants/styleToken'
+import Story from '../components/Story'
 import { getStoriesPage } from '../graphql/queries/getStoriesPage'
-import getFormattedDate from '../utils/formatDate'
 
 export const getStaticProps = async () => {
   const { page, stories, featuredStory } = await getStoriesPage()
@@ -32,11 +19,6 @@ export const getStaticProps = async () => {
 }
 
 export default function Stories({ page, stories = [], featuredStory }) {
-  const storyImageLayout = useBreakpointValue({
-    base: 'fill',
-    md: 'responsive',
-  })
-
   const featStory = featuredStory[0]
 
   const featStoryImageMobile = featStory.featPhotos.find(
@@ -80,83 +62,14 @@ export default function Stories({ page, stories = [], featuredStory }) {
               {stories.map((story) => {
                 const storySlug = `/stories/${story.slug}`
                 return (
-                  <Box
-                    bg="gray.800"
+                  <Story
                     key={story.id}
-                    color="white"
-                    pos="relative"
-                    cursor="pointer"
-                    transition="transform 400ms"
-                    willChange="tranform"
-                    _hover={{
-                      transform: { base: null, md: 'translateY(-20px)' },
-                      transition: 'transform 200ms',
-                      _after: {
-                        content: `" "`,
-                        pos: 'absolute',
-                        bottom: '0',
-                        w: 'full',
-                        h: '6px',
-                        bgGradient: {
-                          base: null,
-                          md: photoSnapGradient,
-                        },
-                        transition: 'opacity 200ms',
-                      },
-                    }}
-                  >
-                    <Link href={storySlug} passHref>
-                      <Box w="full" zIndex="base" pos="relative" bg="black">
-                        <Box pos="relative" h={{ base: '375px', md: 'full' }}>
-                          <NextImage
-                            src={story.photo.url}
-                            layout={storyImageLayout}
-                            objectFit="cover"
-                            objectPosition="center"
-                            width={
-                              storyImageLayout === 'fill'
-                                ? 0
-                                : story.photo.width
-                            }
-                            height={
-                              storyImageLayout === 'fill'
-                                ? 0
-                                : story.photo.height
-                            }
-                            alt={story.title}
-                          />
-                        </Box>
-
-                        <Box
-                          w="full"
-                          zIndex="overlay"
-                          pos="absolute"
-                          bottom="0"
-                          px="10"
-                          py="40"
-                          pb="10"
-                          bgGradient="linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)"
-                        >
-                          <Text color="white" fontSize="13px">
-                            {getFormattedDate(story.date)}
-                          </Text>
-                          <Heading as="h2" variant="h3">
-                            {story.title}
-                          </Heading>
-                          <Text color="white" fontSize="13px">
-                            By {story.author.name}
-                          </Text>
-                          <Divider borderColor="white" opacity="0.2" my="4" />
-                          <Flex justify="space-between">
-                            <CustomLink href={storySlug}>Read story</CustomLink>
-                            <Box w="42px">
-                              <Arrow />
-                            </Box>
-                          </Flex>
-                        </Box>
-                      </Box>
-                    </Link>
-                  </Box>
+                    slug={storySlug}
+                    photo={story.photo}
+                    date={story.date}
+                    title={story.title}
+                    author={story.author.name}
+                  />
                 )
               })}
             </SimpleGrid>
