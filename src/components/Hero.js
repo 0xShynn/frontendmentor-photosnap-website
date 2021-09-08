@@ -60,7 +60,7 @@ const Hero = ({
             />
           )}
           <Flex
-            px={{ base: 0, md: 10, xl: 28 }}
+            px={{ base: 0, md: 10, lg: 16, xl: 28 }}
             direction="column"
             w={{ xl: '387px' }}
             boxSizing="content-box"

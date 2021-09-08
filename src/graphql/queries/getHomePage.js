@@ -27,6 +27,16 @@ const GET_HOME_PAGE_QUERY = gql`
           alt
         }
       }
+      features {
+        id
+        title
+        subtitle
+        icon {
+          url
+          width
+          height
+        }
+      }
       stories(first: 4, where: {isFeatured: false}) {
         title
         slug

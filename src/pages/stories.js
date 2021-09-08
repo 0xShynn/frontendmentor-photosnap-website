@@ -48,7 +48,7 @@ export default function Stories({ page, stories = [], featuredStory }) {
       </Head>
 
       <Flex direction="column" align="center">
-        <Box maxW="container.xl2" w="full">
+        <Box maxW="1920px" w="full">
           {featStory && (
             <FeaturedStory
               imageMobile={featStoryImageMobile}

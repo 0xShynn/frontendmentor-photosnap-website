@@ -1,7 +1,8 @@
-import { Box, Flex, SimpleGrid } from '@chakra-ui/layout'
+import { Box, Flex, SimpleGrid, Stack } from '@chakra-ui/layout'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
+import Feature from '../components/Feature'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import Story from '../components/Story'
@@ -18,9 +19,9 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ page }) {
-  console.log(page)
   const heroes = page?.heroes ?? []
   const stories = page?.stories ?? []
+  const features = page?.features ?? []
 
   return (
     <Layout
@@ -36,20 +37,22 @@ export default function Home({ page }) {
       </Head>
 
       <Flex direction="column">
-        <Box bg="gray.300" maxW="1920px" mx="auto" w="full">
-          {heroes.map((hero, index) => (
-            <Hero
-              key={index}
-              image={hero.image}
-              themeColor={hero.theme}
-              title={hero.title}
-              subtitle={hero.subtitle}
-              link={hero.link}
-              contentSide={hero.contentSide}
-              noGradient={index !== 0 ? true : false}
-            />
-          ))}
-        </Box>
+        {heroes.length > 0 ? (
+          <Box bg="gray.300" maxW="1920px" mx="auto" w="full">
+            {heroes.map((hero, index) => (
+              <Hero
+                key={index}
+                image={hero.image}
+                themeColor={hero.theme}
+                title={hero.title}
+                subtitle={hero.subtitle}
+                link={hero.link}
+                contentSide={hero.contentSide}
+                noGradient={index !== 0 ? true : false}
+              />
+            ))}
+          </Box>
+        ) : null}
 
         {stories.length > 0 ? (
           <SimpleGrid minChildWidth="300px" spacing="0">
@@ -68,6 +71,28 @@ export default function Home({ page }) {
             })}
           </SimpleGrid>
         ) : null}
+
+        {features.length > 0 ? (
+          <Stack
+            bg="white"
+            justify="center"
+            align="center"
+            textAlign="center"
+            direction={{ base: 'column', lg: 'row' }}
+            py={{ base: 24, xl: 28 }}
+            px="12"
+            spacing="12"
+          >
+            {features.map((feature) => (
+              <Feature
+                title={feature.title}
+                subtitle={feature.subtitle}
+                icon={feature.icon}
+                key={feature.id}
+              />
+            ))}
+          </Stack>
+        ) : null}
       </Flex>
     </Layout>
   )
@@ -79,5 +104,6 @@ Home.propTypes = {
     header: PropTypes.object.isRequired,
     heroes: PropTypes.arrayOf(PropTypes.object),
     stories: PropTypes.arrayOf(PropTypes.object),
+    features: PropTypes.arrayOf(PropTypes.object),
   }),
 }
