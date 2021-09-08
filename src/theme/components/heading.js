@@ -8,7 +8,7 @@ const heading = {
   // styles for different visual variants ("outline", "solid")
   variants: {
     h1: {
-      fontSize: { base: '32px', md: '40px' },
+      fontSize: ['24px', '32px', null, '40px'],
       lineHeight: { base: '40px', md: '48px' },
       letterSpacing: { base: '3.33px', md: '4.17px' },
       textTransform: 'uppercase',

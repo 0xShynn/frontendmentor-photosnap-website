@@ -28,7 +28,7 @@ const Hero = ({
         md: contentSide === 'left' ? 'row-reverse' : 'row',
       }}
     >
-      <Box w="full" bg="red.100" pos="relative">
+      <Box w="full" pos="relative">
         <NextImage
           src={image.url}
           layout={imageLayout}
@@ -51,15 +51,20 @@ const Hero = ({
             display={{ base: 'block', md: 'none' }}
           />
         )}
-        <Flex py={{ base: 16, md: 40 }} direction="row">
+        <Flex py={{ base: 16, md: 40, xl: 56 }} direction="row">
           {!noGradient && (
             <Box
               bgGradient={photoSnapGradient}
-              w="12px"
+              w={{ md: '12px', xl: '6px' }}
               display={{ base: 'none', md: 'block' }}
             />
           )}
-          <Flex px={{ base: 0, md: 10 }} direction="column">
+          <Flex
+            px={{ base: 0, md: 10, xl: 28 }}
+            direction="column"
+            w={{ xl: '387px' }}
+            boxSizing="content-box"
+          >
             <Heading
               as="h1"
               variant="h1"

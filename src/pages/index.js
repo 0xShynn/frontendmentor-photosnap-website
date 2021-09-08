@@ -1,9 +1,10 @@
-import { Box, Flex } from '@chakra-ui/layout'
+import { Box, Flex, SimpleGrid } from '@chakra-ui/layout'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
+import Story from '../components/Story'
 import { getHomePage } from '../graphql/queries/getHomePage'
 
 export const getStaticProps = async () => {
@@ -17,7 +18,9 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ page }) {
+  console.log(page)
   const heroes = page?.heroes ?? []
+  const stories = page?.stories ?? []
 
   return (
     <Layout
@@ -33,7 +36,7 @@ export default function Home({ page }) {
       </Head>
 
       <Flex direction="column">
-        <Box bg="gray.300" maxW="container.lg2" mx="auto" w="full">
+        <Box bg="gray.300" maxW="1920px" mx="auto" w="full">
           {heroes.map((hero, index) => (
             <Hero
               key={index}
@@ -47,6 +50,24 @@ export default function Home({ page }) {
             />
           ))}
         </Box>
+
+        {stories.length > 0 ? (
+          <SimpleGrid minChildWidth="300px" spacing="0">
+            {stories.map((story) => {
+              const storySlug = `/stories/${story.slug}`
+              return (
+                <Story
+                  key={story.id}
+                  slug={storySlug}
+                  photo={story.photo}
+                  date={story.date}
+                  title={story.title}
+                  author={story.author.name}
+                />
+              )
+            })}
+          </SimpleGrid>
+        ) : null}
       </Flex>
     </Layout>
   )
@@ -56,6 +77,7 @@ Home.propTypes = {
   page: PropTypes.shape({
     footer: PropTypes.object.isRequired,
     header: PropTypes.object.isRequired,
-    heroes: PropTypes.array,
+    heroes: PropTypes.arrayOf(PropTypes.object),
+    stories: PropTypes.arrayOf(PropTypes.object),
   }),
 }
