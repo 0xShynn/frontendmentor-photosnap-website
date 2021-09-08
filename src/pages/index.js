@@ -1,10 +1,8 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
+import { Box, Flex } from '@chakra-ui/layout'
 import Head from 'next/head'
-import NextImage from 'next/image'
 
+import Hero from '../components/Hero'
 import Layout from '../components/Layout'
-import CustomLink from '../components/utils/CustomLink'
-import { photoSnapGradient } from '../constants/styleToken'
 import { getHomePage } from '../graphql/queries/getHomePage'
 
 export const getStaticProps = async () => {
@@ -37,60 +35,15 @@ export default function Home({ page }) {
       <Flex direction="column">
         <Box bg="gray.300" maxW="container.lg2" mx="auto" w="full">
           {heroes.map((hero, index) => (
-            <Box key={index}>
-              <Box w="full">
-                <NextImage
-                  src={hero.image.url}
-                  layout="responsive"
-                  width={hero.image.width}
-                  height={hero.image.height}
-                  alt={hero.image.alt}
-                />
-              </Box>
-
-              <Box
-                bg={
-                  hero.theme === 'dark'
-                    ? 'primary.pureblack'
-                    : 'primary.purewhite'
-                }
-                px="8"
-              >
-                {index === 0 && (
-                  <Box h="6px" bgGradient={photoSnapGradient} w="126px" />
-                )}
-                <Flex py="16" direction="column">
-                  <Heading
-                    as="h1"
-                    variant="h1"
-                    color={
-                      hero.theme === 'dark'
-                        ? 'primary.purewhite'
-                        : 'primary.pureblack'
-                    }
-                    mb="5"
-                  >
-                    {hero.title}
-                  </Heading>
-                  <Text
-                    color={
-                      hero.theme === 'dark' ? 'primary.lightgrey' : '#666666'
-                    }
-                    mb="5"
-                  >
-                    {hero.subtitle}
-                  </Text>
-                  <CustomLink
-                    href={hero.link.href}
-                    variant={hero.theme === 'dark' ? 'dark' : 'light'}
-                    arrow="true"
-                    alignSelf="flex-start"
-                  >
-                    {hero.link.label}
-                  </CustomLink>
-                </Flex>
-              </Box>
-            </Box>
+            <Hero
+              key={index}
+              image={hero.image}
+              themeColor={hero.theme}
+              title={hero.title}
+              subtitle={hero.subtitle}
+              link={hero.link}
+              contentSide={hero.contentSide}
+            />
           ))}
         </Box>
       </Flex>

@@ -15,6 +15,7 @@ const GET_HOME_PAGE_QUERY = gql`
         title
         subtitle
         theme
+        contentSide
         link{
           href
           label
