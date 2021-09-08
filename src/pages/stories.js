@@ -108,23 +108,23 @@ export default function Stories({ page, stories = [], featuredStory }) {
                     <Link href={storySlug} passHref>
                       <Box w="full" zIndex="base" pos="relative" bg="black">
                         <Box pos="relative" h={{ base: '375px', md: 'full' }}>
-                          {storyImageLayout === 'fill' ? (
-                            <NextImage
-                              src={story.photo.url}
-                              layout={storyImageLayout}
-                              objectFit="cover"
-                              objectPosition="center"
-                              alt={story.title}
-                            />
-                          ) : (
-                            <NextImage
-                              src={story.photo.url}
-                              layout={storyImageLayout}
-                              width={story.photo.width}
-                              height={story.photo.height}
-                              alt={story.title}
-                            />
-                          )}
+                          <NextImage
+                            src={story.photo.url}
+                            layout={storyImageLayout}
+                            objectFit="cover"
+                            objectPosition="center"
+                            width={
+                              storyImageLayout === 'fill'
+                                ? 0
+                                : story.photo.width
+                            }
+                            height={
+                              storyImageLayout === 'fill'
+                                ? 0
+                                : story.photo.height
+                            }
+                            alt={story.title}
+                          />
                         </Box>
 
                         <Box
