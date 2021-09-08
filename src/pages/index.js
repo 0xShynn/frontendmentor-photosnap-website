@@ -43,6 +43,7 @@ export default function Home({ page }) {
               subtitle={hero.subtitle}
               link={hero.link}
               contentSide={hero.contentSide}
+              noGradient={index !== 0 ? true : false}
             />
           ))}
         </Box>
