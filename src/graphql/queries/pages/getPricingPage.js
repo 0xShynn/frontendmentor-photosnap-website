@@ -21,16 +21,22 @@ const GET_PRICING_PAGE_QUERY = gql`
         width
       }
     }
-    features {
-        id
-        title
-        subtitle
-        icon {
-          url
-          width
-          height
-        }
+    table {
+      title
+      items {
+        itemTitle
+        itemOption
       }
+    }
+    plan {
+      planItems {
+        pricePerYear
+        pricePerMonth
+        subtitle
+        title
+      }
+      title
+    }
     isBannerDisplayed
     ${GET_HEADER}
     ${GET_BANNER}

@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/layout'
+import { Box } from '@chakra-ui/layout'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
 
@@ -18,9 +18,10 @@ export const getStaticProps = async () => {
 }
 
 const Pricing = ({ page }) => {
-  console.log(page)
+  // console.log(page)
   const hero = page?.heroes[0] ?? {}
   const banner = page?.banner ?? {}
+  // const plan = page?.plan ?? {}
   const isBannerDisplayed = page?.isBannerDisplayed ?? false
 
   return (
@@ -46,10 +47,6 @@ const Pricing = ({ page }) => {
           />
         )}
 
-        <Box px="6" py="16">
-          <Text>The Features</Text>
-        </Box>
-
         {isBannerDisplayed && (
           <Banner
             title={banner.title}
@@ -67,6 +64,10 @@ Pricing.propTypes = {
     footer: PropTypes.object.isRequired,
     header: PropTypes.object.isRequired,
     heroes: PropTypes.array,
+    plan: PropTypes.shape({
+      planItems: PropTypes.array,
+      title: PropTypes.string.isRequired,
+    }),
     banner: PropTypes.object,
     isBannerDisplayed: PropTypes.bool.isRequired,
   }),
