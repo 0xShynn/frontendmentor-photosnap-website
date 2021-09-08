@@ -6,9 +6,9 @@ import GET_BANNER from './components/getBanner'
 import GET_FOOTER from './components/getFooter'
 import GET_HEADER from './components/getHeader'
 
-const GET_FEATURES_PAGE_QUERY = gql`
-  query FeaturesPage {
-  page(where: {slug: "features"}) {
+const GET_PRICING_PAGE_QUERY = gql`
+  query PricingPage {
+  page(where: {slug: "pricing"}) {
     id
     title
     heroes {
@@ -33,8 +33,8 @@ const GET_FEATURES_PAGE_QUERY = gql`
         }
       }
     isBannerDisplayed
-    ${GET_BANNER}
     ${GET_HEADER}
+    ${GET_BANNER}
     ${GET_FOOTER}
   }
 }
@@ -42,7 +42,7 @@ const GET_FEATURES_PAGE_QUERY = gql`
 
 `
 
-export async function getFeaturesPage() {
-  const data = await gqlClient.request(GET_FEATURES_PAGE_QUERY)
+export async function getPricingPage() {
+  const data = await gqlClient.request(GET_PRICING_PAGE_QUERY)
   return data
 }

@@ -1,20 +1,6 @@
 import { gql } from 'graphql-request'
 
-const GET_HEADER_FOOTER = gql`
-  header {
-    link {
-      label
-      slug
-      href
-    }
-    navigation {
-      pages {
-        title
-        slug
-      }
-      slug
-    }
-  }
+const GET_FOOTER = gql`
   footer {
     link {
       href
@@ -39,4 +25,4 @@ const GET_HEADER_FOOTER = gql`
   }
 `
 
-export default GET_HEADER_FOOTER
+export default GET_FOOTER
