@@ -15,6 +15,7 @@ import Arrow from '../assets/arrow'
 import FeaturedStory from '../components/FeaturedStory'
 import Layout from '../components/Layout'
 import CustomLink from '../components/utils/CustomLink'
+import { photoSnapGradient } from '../constants/styleToken'
 import { getStoriesPage } from '../graphql/queries/getStoriesPage'
 import getFormattedDate from '../utils/formatDate'
 
@@ -98,7 +99,7 @@ export default function Stories({ page, stories = [], featuredStory }) {
                         h: '6px',
                         bgGradient: {
                           base: null,
-                          md: 'linear-gradient(1deg, rgba(255,197,147,1) 0%, rgba(188,113,152,1) 53%, rgba(90,119,255,1) 100%);',
+                          md: photoSnapGradient,
                         },
                         transition: 'opacity 200ms',
                       },

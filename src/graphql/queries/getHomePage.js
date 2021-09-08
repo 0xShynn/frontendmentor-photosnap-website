@@ -13,8 +13,17 @@ const GET_HOME_PAGE_QUERY = gql`
       heroes {
         id
         title
+        subtitle
+        theme
+        link{
+          href
+          label
+        }
         image {
           url
+          width
+          height
+          alt
         }
       }
       ${GET_HEADER_FOOTER}
