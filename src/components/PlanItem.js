@@ -18,7 +18,7 @@ const PlanItem = ({
   const PriceBox = () => (
     <Box>
       <Heading as="p" variant="h1" fontSize="40px" color={headingColor}>
-        ${isPlanYearly ? pricePerYear : pricePerMonth.toFixed(2)}
+        ${isPlanYearly ? pricePerYear : pricePerMonth}
       </Heading>
       <Text color={textColor}>{isPlanYearly ? 'per year' : 'per month'}</Text>
     </Box>
@@ -27,18 +27,26 @@ const PlanItem = ({
   return (
     <Box pos="relative">
       {isProPlan ? (
-        <Box
-          h="6px"
-          bgGradient={photoSnapGradient}
-          w="full"
-          display={{ base: 'block', md: 'none', lg: 'block' }}
-          pos="absolute"
-        />
+        <>
+          <Box
+            h="6px"
+            bgGradient={photoSnapGradient}
+            w="full"
+            display={{ base: 'block', md: 'none', lg: 'block' }}
+            pos="absolute"
+          />
+          <Box
+            h="full"
+            bgGradient={photoSnapGradient}
+            w="6px"
+            display={{ base: 'none', md: 'block', lg: 'none' }}
+            pos="absolute"
+          />
+        </>
       ) : null}
       <Flex
         bg={isProPlan ? 'primary.pureblack' : '#F5F5F5'}
-        px="8"
-        py="8"
+        p={{ base: 8, md: 10 }}
         direction={{ base: 'column', md: 'row', lg: 'column' }}
         align={{ base: 'center', md: 'flex-start' }}
         justify={{ base: 'center', md: 'space-between' }}
@@ -46,7 +54,13 @@ const PlanItem = ({
         h="full"
       >
         <Flex flex="1" maxW="270px" direction="column">
-          <Heading as="h2" variant="h2" mb="3" mt="4" color={headingColor}>
+          <Heading
+            as="h2"
+            variant="h2"
+            mb="4"
+            mt={{ base: 4, md: 0 }}
+            color={headingColor}
+          >
             {title}
           </Heading>
           <Text mb="8" maxW="270px" color={textColor} flex="1">
@@ -60,7 +74,11 @@ const PlanItem = ({
           </Button>
         </Flex>
 
-        <Box mb="8" display={{ base: 'none', md: 'block', lg: 'none' }}>
+        <Box
+          mb="8"
+          display={{ base: 'none', md: 'block', lg: 'none' }}
+          textAlign="right"
+        >
           <PriceBox />
         </Box>
       </Flex>
