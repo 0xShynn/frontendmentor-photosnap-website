@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Banner from '../components/Banner'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
+import PlanForm from '../components/PlanForm'
 import { getPricingPage } from '../graphql/queries/pages/getPricingPage'
 
 export const getStaticProps = async () => {
@@ -21,7 +22,8 @@ const Pricing = ({ page }) => {
   // console.log(page)
   const hero = page?.heroes[0] ?? {}
   const banner = page?.banner ?? {}
-  // const plan = page?.plan ?? {}
+  const plans = page?.plan ?? {}
+  console.log(plans)
   const isBannerDisplayed = page?.isBannerDisplayed ?? false
 
   return (
@@ -37,7 +39,7 @@ const Pricing = ({ page }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box bg="white">
-        {hero && (
+        {hero ? (
           <Hero
             title={hero.title}
             subtitle={hero.subtitle}
@@ -45,15 +47,17 @@ const Pricing = ({ page }) => {
             themeColor={hero.theme}
             image={hero.image}
           />
-        )}
+        ) : null}
 
-        {isBannerDisplayed && (
+        {plans ? <PlanForm title={plans.title} data={plans.planItems} /> : null}
+
+        {isBannerDisplayed ? (
           <Banner
             title={banner.title}
             link={banner.link}
             backgroundImage={banner.backgroundImage}
           />
-        )}
+        ) : null}
       </Box>
     </Layout>
   )
