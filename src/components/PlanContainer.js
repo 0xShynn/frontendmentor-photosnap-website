@@ -17,8 +17,15 @@ const PlanForm = ({ data }) => {
   }
 
   return (
-    <Box py="16" px="10">
-      <Stack direction="row" spacing="6" px="6" justify="center" mb="8">
+    <Box py={{ base: 16, md: 28, xl: 32 }} px="10">
+      <Stack
+        direction="row"
+        spacing="7"
+        px="6"
+        justify="center"
+        mb={{ base: 8, md: 10 }}
+        align="center"
+      >
         <Heading
           as="h3"
           variant="h3"
@@ -26,7 +33,20 @@ const PlanForm = ({ data }) => {
         >
           Monthly
         </Heading>
-        <Switch onChange={onSubmit} colorScheme="" size="lg" />
+        <Switch
+          onChange={onSubmit}
+          colorScheme=""
+          size="lg"
+          sx={{
+            '.chakra-switch__track': {
+              bg: '#DFDFDF',
+              padding: 1,
+            },
+            '.chakra-switch__thumb': {
+              bg: 'primary.pureblack',
+            },
+          }}
+        />
         <Heading
           as="h3"
           variant="h3"

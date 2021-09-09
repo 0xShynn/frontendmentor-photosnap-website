@@ -46,12 +46,13 @@ const PlanItem = ({
       ) : null}
       <Flex
         bg={isProPlan ? 'primary.pureblack' : '#F5F5F5'}
-        p={{ base: 8, md: 10 }}
+        py={{ base: 8, lg: isProPlan ? 16 : 10 }}
+        px={{ base: 8, lg: 10 }}
+        mt={{ lg: !isProPlan ? 6 : 0 }}
         direction={{ base: 'column', md: 'row', lg: 'column' }}
         align={{ base: 'center', md: 'flex-start' }}
         justify={{ base: 'center', md: 'space-between' }}
         textAlign={{ base: 'center', md: 'left', lg: 'center' }}
-        h="full"
       >
         <Flex flex="1" maxW="270px" direction="column">
           <Heading
