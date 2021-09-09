@@ -34,12 +34,11 @@ const Banner = ({ title, link, backgroundImage }) => {
       >
         {title && (
           <Heading
-            as="h1"
+            as="h3"
             variant="h1"
             mb={{ base: 6, md: 0 }}
             color="white"
             maxW="400px"
-            fontSize={{ md: '40px' }}
           >
             {title}
           </Heading>

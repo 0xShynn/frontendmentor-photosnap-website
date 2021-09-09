@@ -27,7 +27,7 @@ const PlanForm = ({ data }) => {
         align="center"
       >
         <Heading
-          as="h2"
+          as="p"
           variant="h3"
           color={isPlanYearly ? '#808080' : 'primary.pureblack'}
         >
@@ -52,7 +52,7 @@ const PlanForm = ({ data }) => {
         />
 
         <Heading
-          as="h2"
+          as="p"
           variant="h3"
           color={isPlanYearly ? 'primary.pureblack' : '#646464'}
         >

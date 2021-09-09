@@ -16,7 +16,7 @@ const CompareTable = ({ data, title, pricingEnum }) => {
       direction="column"
     >
       <Heading
-        as="h2"
+        as="h3"
         variant="h1"
         mb="10"
         display={{ base: 'none', md: 'block' }}
