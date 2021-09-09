@@ -10,17 +10,17 @@ import PlanContainer from '../components/PlanContainer'
 import { getPricingPage } from '../graphql/queries/pages/getPricingPage'
 
 export const getStaticProps = async () => {
-  const { page } = await getPricingPage()
-
+  const { page, __type } = await getPricingPage()
+  const pricingEnumValues = __type.enumValues
   return {
     props: {
       page,
+      pricingEnumValues,
     },
   }
 }
 
-const Pricing = ({ page }) => {
-  // console.log(page)
+const Pricing = ({ page, pricingEnumValues }) => {
   const hero = page?.heroes[0] ?? {}
   const banner = page?.banner ?? {}
   const pricingPlans = page?.plan ?? {}
@@ -61,6 +61,7 @@ const Pricing = ({ page }) => {
           <CompareTable
             data={compareTableData.items}
             title={compareTableData.title}
+            pricingEnum={pricingEnumValues}
           />
         ) : null}
 
@@ -86,6 +87,7 @@ Pricing.propTypes = {
     plan: PropTypes.object,
     table: PropTypes.object,
   }),
+  pricingEnumValues: PropTypes.array.isRequired,
 }
 
 export default Pricing

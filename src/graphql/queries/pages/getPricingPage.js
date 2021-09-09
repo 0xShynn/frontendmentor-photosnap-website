@@ -42,6 +42,11 @@ const GET_PRICING_PAGE_QUERY = gql`
     ${GET_BANNER}
     ${GET_FOOTER}
   }
+  __type(name: "PricingFeatures") {
+    enumValues {
+      name
+    }
+  }
 }
 
 

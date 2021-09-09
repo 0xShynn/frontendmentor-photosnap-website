@@ -27,6 +27,11 @@ const heading = {
       letterSpacing: '2px',
       textTransform: 'uppercase',
     },
+    h5: {
+      fontSize: '10px',
+      letterSpacing: '1.67px',
+      textTransform: 'uppercase',
+    },
   },
   // default values for `size` and `variant`
   defaultProps: {},
