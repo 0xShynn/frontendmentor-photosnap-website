@@ -20,14 +20,10 @@ export const getStaticProps = async () => {
 }
 
 const Features = ({ page }) => {
-  console.log(page)
-
   const features = page?.features ?? []
   const hero = page?.heroes[0] ?? {}
   const banner = page?.banner ?? {}
   const isBannerDisplayed = page?.isBannerDisplayed ?? false
-
-  console.log(isBannerDisplayed)
 
   return (
     <Layout
