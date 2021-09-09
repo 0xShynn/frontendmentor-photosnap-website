@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import PlanItem from './PlanItem'
 
-const PlanContainer = ({ data }) => {
+const PlanForm = ({ data }) => {
   const monthly = 'Monthly',
     yearly = 'Yearly'
   const [planPeriodicity, setPlanPeriodicity] = useState(monthly)
@@ -35,8 +35,9 @@ const PlanContainer = ({ data }) => {
           Yearly
         </Heading>
       </Stack>
+
       <Stack
-        direction={{ base: 'column', md: 'row' }}
+        direction={{ base: 'column', lg: 'row' }}
         spacing="6"
         justify="center"
       >
@@ -55,8 +56,8 @@ const PlanContainer = ({ data }) => {
   )
 }
 
-PlanContainer.propTypes = {
+PlanForm.propTypes = {
   data: PropTypes.array.isRequired,
 }
 
-export default PlanContainer
+export default PlanForm
