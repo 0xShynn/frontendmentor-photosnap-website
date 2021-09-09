@@ -3,6 +3,7 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 
 import Banner from '../components/Banner'
+import CompareTable from '../components/CompareTable'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import PlanContainer from '../components/PlanContainer'
@@ -22,8 +23,8 @@ const Pricing = ({ page }) => {
   // console.log(page)
   const hero = page?.heroes[0] ?? {}
   const banner = page?.banner ?? {}
-  const plans = page?.plan ?? {}
-  console.log(plans)
+  const pricingPlans = page?.plan ?? {}
+  const compareTableData = page?.table ?? {}
   const isBannerDisplayed = page?.isBannerDisplayed ?? false
 
   return (
@@ -49,8 +50,18 @@ const Pricing = ({ page }) => {
           />
         ) : null}
 
-        {plans ? (
-          <PlanContainer title={plans.title} data={plans.planItems} />
+        {pricingPlans ? (
+          <PlanContainer
+            title={pricingPlans.title}
+            data={pricingPlans.planItems}
+          />
+        ) : null}
+
+        {compareTableData ? (
+          <CompareTable
+            data={compareTableData.items}
+            title={compareTableData.title}
+          />
         ) : null}
 
         {isBannerDisplayed ? (
@@ -67,15 +78,13 @@ const Pricing = ({ page }) => {
 
 Pricing.propTypes = {
   page: PropTypes.shape({
+    banner: PropTypes.object,
     footer: PropTypes.object.isRequired,
     header: PropTypes.object.isRequired,
     heroes: PropTypes.array,
-    plan: PropTypes.shape({
-      planItems: PropTypes.array,
-      title: PropTypes.string.isRequired,
-    }),
-    banner: PropTypes.object,
     isBannerDisplayed: PropTypes.bool.isRequired,
+    plan: PropTypes.object,
+    table: PropTypes.object,
   }),
 }
 
