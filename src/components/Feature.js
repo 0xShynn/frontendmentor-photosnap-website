@@ -19,7 +19,7 @@ const Feature = ({ title, subtitle, icon }) => {
           alt={icon.alt}
         />
       </Box>
-      <Heading as="h3" variant="h3" mb="4" textAlign="center">
+      <Heading as="h2" variant="h3" mb="4" textAlign="center">
         {title}
       </Heading>
       <Text textAlign="center">{subtitle}</Text>

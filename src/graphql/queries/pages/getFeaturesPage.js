@@ -19,6 +19,7 @@ const GET_FEATURES_PAGE_QUERY = gql`
         url
         height
         width
+        alt
       }
     }
     features {
@@ -29,6 +30,7 @@ const GET_FEATURES_PAGE_QUERY = gql`
           url
           width
           height
+          alt
         }
       }
     isBannerDisplayed

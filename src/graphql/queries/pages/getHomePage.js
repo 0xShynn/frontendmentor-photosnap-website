@@ -35,6 +35,7 @@ const GET_HOME_PAGE_QUERY = gql`
           url
           width
           height
+          alt
         }
       }
       stories(first: 4, where: {isFeatured: false}) {

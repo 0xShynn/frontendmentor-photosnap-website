@@ -27,16 +27,19 @@ const PlanForm = ({ data }) => {
         align="center"
       >
         <Heading
-          as="h3"
+          as="h2"
           variant="h3"
           color={isPlanYearly ? '#808080' : 'primary.pureblack'}
         >
           Monthly
         </Heading>
+
         <Switch
+          aria-label="Switch"
           onChange={onSubmit}
           colorScheme=""
           size="lg"
+          id="switch"
           sx={{
             '.chakra-switch__track': {
               bg: '#DFDFDF',
@@ -47,10 +50,11 @@ const PlanForm = ({ data }) => {
             },
           }}
         />
+
         <Heading
-          as="h3"
+          as="h2"
           variant="h3"
-          color={isPlanYearly ? 'primary.pureblack' : '#808080'}
+          color={isPlanYearly ? 'primary.pureblack' : '#646464'}
         >
           Yearly
         </Heading>

@@ -19,6 +19,7 @@ const GET_PRICING_PAGE_QUERY = gql`
         url
         height
         width
+        alt
       }
     }
     table {
