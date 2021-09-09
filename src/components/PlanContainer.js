@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import PlanItem from './PlanItem'
 
-const PlanForm = ({ data }) => {
+const PlanContainer = ({ data }) => {
   const monthly = 'Monthly',
     yearly = 'Yearly'
   const [planPeriodicity, setPlanPeriodicity] = useState(monthly)
@@ -55,8 +55,8 @@ const PlanForm = ({ data }) => {
   )
 }
 
-PlanForm.propTypes = {
+PlanContainer.propTypes = {
   data: PropTypes.array.isRequired,
 }
 
-export default PlanForm
+export default PlanContainer

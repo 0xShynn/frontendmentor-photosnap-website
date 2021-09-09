@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Banner from '../components/Banner'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
-import PlanForm from '../components/PlanForm'
+import PlanContainer from '../components/PlanContainer'
 import { getPricingPage } from '../graphql/queries/pages/getPricingPage'
 
 export const getStaticProps = async () => {
@@ -49,7 +49,9 @@ const Pricing = ({ page }) => {
           />
         ) : null}
 
-        {plans ? <PlanForm title={plans.title} data={plans.planItems} /> : null}
+        {plans ? (
+          <PlanContainer title={plans.title} data={plans.planItems} />
+        ) : null}
 
         {isBannerDisplayed ? (
           <Banner
