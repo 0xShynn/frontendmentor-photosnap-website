@@ -35,7 +35,11 @@ const PlanForm = ({ data }) => {
           Yearly
         </Heading>
       </Stack>
-      <Stack direction={{ base: 'column', md: 'row' }} spacing="6">
+      <Stack
+        direction={{ base: 'column', md: 'row' }}
+        spacing="6"
+        justify="center"
+      >
         {data.map((plan, index) => (
           <PlanItem
             key={index}
