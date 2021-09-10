@@ -53,6 +53,9 @@ const PlanItem = ({
         align={{ base: 'center', md: 'flex-start' }}
         justify={{ base: 'center', md: 'space-between' }}
         textAlign={{ base: 'center', md: 'left', lg: 'center' }}
+        transition="transform .2s"
+        willChange="transform"
+        _hover={{ transform: 'scale(1.05)' }}
       >
         <Flex flex="1" maxW="270px" direction="column">
           <Heading
