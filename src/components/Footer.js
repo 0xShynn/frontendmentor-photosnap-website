@@ -3,7 +3,7 @@ import { Box, Flex, HStack, Link, Stack, Text } from '@chakra-ui/layout'
 import NextImage from 'next/image'
 import PropTypes from 'prop-types'
 
-import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
+import PhotoSnapLogoWhite from '../assets/brand/PhotoSnapLogoWhite'
 
 import CustomLink from './utils/CustomLink'
 
@@ -29,7 +29,7 @@ const Footer = ({ data }) => {
         <Flex direction="column" align={{ md: 'flex-start' }}>
           <CustomLink href="/" aria-label="Photosnap Logo">
             <Box w="170px" mb="10">
-              <PhotoSnapLogo color="primary.purewhite" />
+              <PhotoSnapLogoWhite />
             </Box>
           </CustomLink>
 

@@ -3,7 +3,7 @@ import { useDisclosure } from '@chakra-ui/hooks'
 import { Box, Divider, Flex, HStack, VStack } from '@chakra-ui/layout'
 import PropTypes from 'prop-types'
 
-import PhotoSnapLogo from '../assets/brand/PhotosnapLogo'
+import PhotoSnapLogoBlack from '../assets/brand/PhotoSnapLogoBlack'
 import CloseIcon from '../assets/ui/CloseIcon'
 import HamburgerMenuIcon from '../assets/ui/HamburgerMenuIcon'
 
@@ -30,7 +30,7 @@ const Header = ({ data }) => {
       >
         <CustomLink href="/" aria-label="Photosnap Logo">
           <Box w="170px">
-            <PhotoSnapLogo color="primary.pureblack" />
+            <PhotoSnapLogoBlack />
           </Box>
         </CustomLink>
 
