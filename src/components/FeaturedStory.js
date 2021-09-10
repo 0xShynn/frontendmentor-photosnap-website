@@ -27,6 +27,7 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
           <Box
             pos="relative"
             display={{ base: 'none', md: 'block', xl: 'none' }}
+            h={{ md: '650px', lg: '660px' }}
           >
             <NextImage
               src={imageTablet.image.url}
@@ -57,7 +58,7 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
           zIndex="overlay"
           boxSizing="content-box"
           align="flex-start"
-          py={{ base: 10, md: 24, lg: 32, xl: 32 }}
+          py={{ base: 10, md: 28, lg: 32, xl: 32 }}
           px={{ base: 10, lg: 24, xl: 32 }}
           maxW={{ md: '387px' }}
           spacing="5"
@@ -66,7 +67,12 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
           <Heading as="h4" variant="h4" color="primary.purewhite">
             Last month&apos;s featured story
           </Heading>
-          <Heading as="h1" variant="h1" color="primary.purewhite">
+          <Heading
+            as="h1"
+            variant="h1"
+            fontSize={{ base: 32, md: '40px' }}
+            color="primary.purewhite"
+          >
             {data.title}
           </Heading>
           <Text color="primary.lightgrey" fontSize="13px">
