@@ -59,7 +59,7 @@ export default function Stories({ page, stories = [], featuredStory }) {
           )}
 
           {stories.length > 0 ? (
-            <SimpleGrid minChildWidth="300px" spacing="0">
+            <SimpleGrid columns={{ base: 1, sm2: 2, md: 2, lg: 4 }} spacing="0">
               {stories.map((story) => {
                 const storySlug = `/stories/${story.slug}`
                 return (

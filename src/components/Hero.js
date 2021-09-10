@@ -20,12 +20,13 @@ const Hero = ({
     base: 'responsive',
     md: 'fill',
   })
+  console.log(imageLayout)
 
   return (
     <Flex
       direction={{
         base: 'column',
-        md: contentSide === 'left' ? 'row-reverse' : 'row',
+        sm2: contentSide === 'left' ? 'row-reverse' : 'row',
       }}
     >
       {image && (

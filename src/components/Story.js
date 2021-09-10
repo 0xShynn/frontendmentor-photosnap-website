@@ -42,7 +42,7 @@ const Story = ({ slug, photo, date, title, author }) => {
     >
       <Link href={slug} passHref>
         <Box w="full" zIndex="base" pos="relative" bg="black">
-          <Box pos="relative" h={{ base: '375px', md: 'full' }}>
+          <Box pos="relative" h={{ base: '375px', sm2: 'full', md: 'full' }}>
             <NextImage
               src={photo.url}
               layout={storyImageLayout}
