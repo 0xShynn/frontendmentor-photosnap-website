@@ -2,6 +2,8 @@ import { Box, Text } from '@chakra-ui/layout'
 import { GraphQLClient, gql } from 'graphql-request'
 import PropTypes from 'prop-types'
 
+import Layout from '../../components/Layout'
+
 const client = new GraphQLClient(process.env.GRAPHCMS_PROJECT_API)
 
 export const getStaticPaths = async () => {
@@ -60,10 +62,17 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Story({ story }) {
   return (
-    <Box w="full">
-      <Text>{story.title}</Text>
-      <Text>{story.author.name}</Text>
-    </Box>
+    <Layout
+      data={{
+        header: page.header,
+        footer: page.footer,
+      }}
+    >
+      <Box w="full">
+        <Text>{story.title}</Text>
+        <Text>{story.author.name}</Text>
+      </Box>
+    </Layout>
   )
 }
 
