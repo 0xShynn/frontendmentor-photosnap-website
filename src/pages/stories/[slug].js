@@ -41,11 +41,46 @@ export const getStaticProps = async ({ params }) => {
           }
         }
       }
+      footer(where: { slug: "primary" }) {
+        link {
+          href
+          label
+        }
+        navigation {
+          pages {
+            title
+            slug
+          }
+        }
+        socialLinks {
+          label
+          alt
+          url
+          logo {
+            url
+            width
+            height
+          }
+        }
+      }
+      header(where: { slug: "primary" }) {
+        link {
+          label
+          slug
+          href
+        }
+        navigation {
+          pages {
+            title
+            slug
+          }
+          slug
+        }
+      }
     }
   `
 
   const data = await client.request(query, { slug })
-
   if (!data.story) {
     return {
       notFound: true,
@@ -55,17 +90,19 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       story: { ...data.story },
+      data,
       revalidate: 60 * 60,
     },
   }
 }
 
-export default function Story({ story }) {
+export default function Story({ story, data }) {
+  console.log(data)
   return (
     <Layout
       data={{
-        header: page.header,
-        footer: page.footer,
+        header: data.header,
+        footer: data.footer,
       }}
     >
       <Box w="full">
@@ -77,6 +114,10 @@ export default function Story({ story }) {
 }
 
 Story.propTypes = {
+  data: PropTypes.shape({
+    footer: PropTypes.object.isRequired,
+    header: PropTypes.object.isRequired,
+  }),
   story: PropTypes.shape({
     author: PropTypes.shape({
       name: PropTypes.string.isRequired,
