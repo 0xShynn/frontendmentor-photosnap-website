@@ -20,7 +20,6 @@ const Hero = ({
     base: 'responsive',
     md: 'fill',
   })
-  console.log(imageLayout)
 
   return (
     <Flex
