@@ -78,6 +78,7 @@ export default function Story({ story, header, footer }) {
               src={story.photo.url}
               width={story.photo.width}
               height={story.photo.height}
+              alt={story.title}
             />
           </Box>
         </Box>

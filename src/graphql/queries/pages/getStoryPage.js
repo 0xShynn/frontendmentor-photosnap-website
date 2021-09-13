@@ -12,6 +12,7 @@ const GET_STORY_PAGE = gql`
         url
         width
         height
+        alt
       }
       author {
         name
