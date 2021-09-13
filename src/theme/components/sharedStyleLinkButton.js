@@ -6,7 +6,7 @@ export const sharedBaseStyle = {
   letterSpacing: '2px',
 }
 
-const SharedBtnStyle = { py: '11px', px: '44px', fontSize: '12px' }
+const SharedBtnStyle = { py: '11px', px: '30px', fontSize: '12px' }
 
 export const lightBtn = {
   lightBtn: {

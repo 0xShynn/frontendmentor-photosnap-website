@@ -81,7 +81,7 @@ const Hero = ({
             </Heading>
             <Text
               color={themeColor === 'dark' ? 'primary.lightgrey' : '#666666'}
-              mb="5"
+              mb="8"
             >
               {subtitle}
             </Text>
