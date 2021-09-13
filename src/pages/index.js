@@ -38,7 +38,7 @@ export default function Home({ page }) {
 
       <Flex direction="column">
         {heroes.length > 0 ? (
-          <Box bg="gray.300" maxW="1920px" mx="auto" w="full">
+          <Box maxW="1920px" mx="auto" w="full">
             {heroes.map((hero, index) => (
               <Hero
                 key={index}
