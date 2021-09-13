@@ -83,7 +83,7 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
           </Text>
           <Text color="primary.lightgrey">{data.featuredText ?? null}</Text>
           <CustomLink
-            href={`stories/${data.slug}`}
+            href={`/stories/${data.slug}`}
             arrow={true}
             alignSelf="flex-start"
             variant="dark"
