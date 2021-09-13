@@ -87,7 +87,11 @@ const Header = ({ data }) => {
                     {link.title}
                   </CustomLink>
                 ))}
-                <Divider borderColor="primary.pureblack" opacity="0.25" />
+                <Divider
+                  borderColor="primary.pureblack"
+                  opacity="0.25"
+                  role="presentation"
+                />
                 <CustomLink
                   href="/"
                   variant="lightBtn"
