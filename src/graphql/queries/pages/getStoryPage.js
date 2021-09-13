@@ -6,14 +6,19 @@ const GET_STORY_PAGE = gql`
   query Story($slug: String!) {
     story(where: { slug: $slug }) {
       id
+      date
       title
       photo {
         url
+        width
+        height
       }
       author {
         name
         avatar {
           url
+          width
+          height
         }
       }
     }

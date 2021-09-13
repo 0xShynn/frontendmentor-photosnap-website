@@ -17,7 +17,7 @@ const Story = ({ slug, photo, date, title, author }) => {
 
   return (
     <Box
-      bg="gray.800"
+      bg="secondary.blackdust"
       color="white"
       pos="relative"
       cursor="pointer"

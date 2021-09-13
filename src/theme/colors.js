@@ -4,7 +4,9 @@ const colors = {
     lightgrey: '#DFDFDF',
     purewhite: '#FFFFFF',
   },
-  secondary: {},
+  secondary: {
+    blackdust: '#0F0F0F',
+  },
 }
 
 export default colors

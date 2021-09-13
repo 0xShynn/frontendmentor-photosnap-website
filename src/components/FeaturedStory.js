@@ -83,7 +83,7 @@ const FeaturedStory = ({ data, imageMobile, imageTablet, imageDesktop }) => {
           </Text>
           <Text color="primary.lightgrey">{data.featuredText ?? null}</Text>
           <CustomLink
-            href="#"
+            href={`stories/${data.slug}`}
             arrow={true}
             alignSelf="flex-start"
             variant="dark"
@@ -103,6 +103,7 @@ FeaturedStory.propTypes = {
     }).isRequired,
     date: PropTypes.string.isRequired,
     featuredText: PropTypes.string,
+    slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }),
   imageDesktop: PropTypes.shape({
