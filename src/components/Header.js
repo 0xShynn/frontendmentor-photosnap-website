@@ -90,7 +90,7 @@ const Header = ({ data }) => {
                 <Divider
                   borderColor="primary.pureblack"
                   opacity="0.25"
-                  role="presentation"
+                  role="separator"
                 />
                 <CustomLink
                   href="/"

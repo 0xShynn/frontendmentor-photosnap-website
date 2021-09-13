@@ -85,7 +85,7 @@ const Story = ({ slug, photo, date, title, author }) => {
                 borderColor="white"
                 opacity="0.2"
                 my="4"
-                role="presentation"
+                role="separator"
               />
               <Flex justify="space-between">
                 <LinkOverlay
