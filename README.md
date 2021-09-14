@@ -10,6 +10,7 @@ This is a solution to the [Photosnap Website challenge on Frontend Mentor](https
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
@@ -38,9 +39,14 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org) - React framework
+- [GraphCMS](http://graphcms.com) - Headless CMS
 - [Vercel](https://vercel.com/) - Cloud platform for serverless deployment
-- [Chakra UI](https://chakra-ui.com) - For styles
+- [Chakra UI](https://chakra-ui.com) - UI framework
 - [Sizzy](https://sizzy.co/) - For the responsive web design
+
+### Continued development
+
+For this project I wanted to try GraphCMS as a headless CMS to integrate content (text, images, icons, logos etc). It took me more time to finish the challenge but I learned a lot about how to structure the content, build the graphql queries and use the data during the development part. It was a good experience and I'm planning to keep learning about the JAMstack and headless CMS.
 
 ### Useful resources
 
