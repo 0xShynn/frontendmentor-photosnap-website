@@ -100,6 +100,14 @@ export const SEO = {
     type: 'website',
     locale: 'en_IE',
     url: canonicalUrl,
+    images: [
+      {
+        url: 'https://www.dropbox.com/s/artiep71z15vg82/photosnap-ogimage.jpg?raw=1',
+        width: 1200,
+        height: 630,
+        alt: 'Preview of the website',
+      },
+    ],
   },
   twitter: {
     handle: '@photosnap',
