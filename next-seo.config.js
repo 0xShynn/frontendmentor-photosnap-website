@@ -110,8 +110,7 @@ export const SEO = {
     ],
   },
   twitter: {
-    handle: '@photosnap',
-    site: '@photosnap',
+    handle: '@anhek_',
     cardType: 'summary_large_image',
   },
 }
