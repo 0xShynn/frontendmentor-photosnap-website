@@ -1,6 +1,8 @@
 const canonicalUrl = 'http://frontendmentor-photosnap-website-anhek.vercel.app/'
 
 const defaultTitle = 'Photosnap'
+const defaultDescription =
+  'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.'
 
 export const SEO = {
   defaultTitle: defaultTitle,
@@ -97,6 +99,7 @@ export const SEO = {
   ],
   openGraph: {
     title: 'Photosnap',
+    description: defaultDescription,
     type: 'website',
     locale: 'en_IE',
     url: canonicalUrl,
