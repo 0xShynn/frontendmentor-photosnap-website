@@ -33,7 +33,7 @@ const AuthorBanner = () => {
           </Link>
         </Text>
         <Link
-          href="https://github.com/anhek/frontendmentor-designo-website"
+          href="https://github.com/anhek/frontendmentor-photosnap-website"
           target="_blank"
           aria-label="Link to the Github repo of the code challenge"
           ml="4"
